@@ -1,0 +1,6 @@
+[Match]
+Name=en*
+Path=platform-3f980000.usb-usb-0:1.[2345]:1.0
+
+[Network]
+DHCP=ipv4

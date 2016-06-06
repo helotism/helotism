@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+{% include head.html %}
+
+  <body>
+
+    {% include header.html %}
+
+    <div class="main-container">
+      <div class="main wrapper clearfix">
+        {{ content }}
+      </div>
+    </div>
+
+    {% include footer.html %}
+
+    <script src="{{ "/business/marketing/website/assets/js/main.js" | prepend: site.baseurl }}"></script>
+
+    <script>
+        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+        e.src='//www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+        ga('create','UA-7870009-7','auto');ga('set', 'anonymizeIp', true);ga('send','pageview');
+    </script>
+  </body>
+
+</html>

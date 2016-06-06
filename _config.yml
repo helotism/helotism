@@ -1,0 +1,75 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+title: Helotism
+email: post@cpri.or.it
+description: > # this means to ignore newlines until "baseurl:"
+  Yet another Raspberry Pi Cluster
+baseurl: ""
+#baseurl: "/PRDV"
+url: "http://helotism.de" # the base hostname & protocol for your site
+github_username:  cprior
+
+# Build settings
+markdown: kramdown
+kramdown:
+  input: GFM # Enable GitHub Flavored Markdown (fenced code blocks)
+  hard_wrap: false
+highlighter: rouge
+
+permalink: /:categories/:year-:month-:day-:title.html
+
+source:        .
+layouts_dir:  ./business/marketing/website/_layouts
+includes_dir: ./business/marketing/website/_includes
+destination:  ./business/marketing/website/_site
+data_dir:     ./data
+
+exclude: 
+  - apperlication #_physical
+  - tecKnology
+
+sass:
+    sass_dir: ./business/marketing/website/assets/_sass
+
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+      type: "posts" # previously `post` in Jekyll 2.2.
+    values:
+      layout: "post"
+  -
+    scope:
+      path: "application/physical/building-blocks"
+      type: "posts" #index.md is of type application-physical_building-blocks
+    values:
+      permalink: /application/physical/building-blocks/:title.html
+
+#prose:
+#  rooturl: '_posts'
+#  siteurl: 'http://prose.github.io/starter/'
+#  relativeLinks: 'http://prose.github.io/starter/links.jsonp'
+#  media: './business/marketing/website/assets/media'
+#  ignore:
+#    - index.md
+#    - _config.yml
+#    - ./business/marketing/website/_layouts
+#    - ./business/marketing/website/_includes
+
+
+
+#https://talk.jekyllrb.com/t/how-do-you-add-items-to-an-array-in-jekyll/324
+array: []
+
+
+gems:
+  - jekyll-redirect-from
+
+whitelist:
+  - jekyll-redirect-from

@@ -1,0 +1,19 @@
+curl -u "cprior" https://api.github.com/orgs/helotism/repos -d '{"name":"helotism","description":"Yet Another Raspberry Pi cluster","homepage":"http://www.helotism.de/","auto_init":"true","license_template":"mit","has_wiki":"false","has_issues":"true","has_downloads":"false"}'
+
+$ i="";for frml in users dnsmasq ; do echo $frml; git remote add remote${i}_${frml}-formula git@github.com:saltstack-formulas/${frml}-formula.git; git fetch remote${i}_${frml}-formula; git read-tree --prefix=application/physical/vendor/saltstack-formulas/${frml}_formula -u remote${i}_${frml}-formula/master; done
+
+for d in application/logical application/physical technology/physical technology/logical ; do f=$d/${d/\//_}.md; if [ ! -f "$f" ]; then touch $f; fi; done
+
+_TOPSLSSTRING='base:\n';path=application/physical/saltstack/srv/salt; for role in salt-master i2c-rtc dns-server ntp-server proxy-cache network-router power-switch; do if [ ! -f "${path}/${role}.sls" ]; then touch "${path}/${role}.sls"; echo "Created ${path}/${role}.sls"; else echo "The file ${path}/${role}.sls is already existing."; fi; rm "${path}/${role}.sls"; _TOPSLSSTRING="${_TOPSLSSTRING}\n  'roles:${role}':\n    - match: grain\n    - ${role}\n"; done; echo -e "$_TOPSLSSTRING"
+
+python3 -c 'import crypt; print(crypt.crypt("helotism", crypt.mksalt(crypt.METHOD_SHA512)))'
+mkpasswd --method=sha-512 --salt=vb1tLY1qiY helotism
+
+gsettings set org.gnome.desktop.media-handling automount-open 'false'
+
+wmctrl -r :SELECT: -e 0,10,10,854,480
+wmctrl -l -G
+ffmpeg -video_size 854x480 -framerate 30 -f x11grab -i :0.0+75,62 -c:v libx264 -qp 0 -preset ultrafast capture.mkv
+PS1="cloned repo $"
+ffmpeg -video_size 854x480 -framerate 30 -f x11grab -i :0.0+75,62 -c:v libx264 -qp 0 -preset ultrafast /home/cpr/helotism/data/screencapture_bootstrap-arch_$(date +%Y%m%d_%H%M%S ).mkv
+

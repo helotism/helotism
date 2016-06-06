@@ -1,0 +1,5 @@
+[Match]
+Path=platform-3f980000.usb-usb-0:1.1:1.0
+
+[Link]
+Name=lan0

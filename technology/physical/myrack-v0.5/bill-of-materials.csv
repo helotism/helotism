@@ -1,0 +1,9 @@
+ID	partno	part_shortname	quantity	quantity_unit	used_in_partno	part_description	make-or-buy	supplier_name	supplier_articleno	price_per_piece	price_per_piece_currency	drawing_filename	drawing_itemno
+1	2015060001	tableau_switch	1	pcs			make					PRDV_helotism_v1.0.dwg	2
+2	2015060002	tableau_boards	1	pcs			make					PRDV_helotism_v1.0.dwg	1
+3	2015060003	tableau_powersupply	1	pcs			make					PRDV_helotism_v1.0.dwg	3
+4	2015060004	beam_bottom	1	pcs			make					PRDV_helotism_v1.0.dwg	4
+5	2015060005	panel_operator	1	pcs			make						
+6	2015060006	plate_powersupply-back	1	pcs			make					PRDV_helotism_v1.0.dwg	8
+7	2015060007	plate_powersupply-side	2	pcs			make					PRDV_helotism_v1.0.dwg	7
+8	2015060008	panel_side	2	pcs			make					PRDV_helotism_v1.0.dwg	

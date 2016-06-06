@@ -1,0 +1,2 @@
+helotism:
+  ext-pillar: available

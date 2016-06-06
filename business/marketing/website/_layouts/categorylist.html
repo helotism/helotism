@@ -1,0 +1,17 @@
+---
+layout: default
+---
+
+<!-- http://primalivet.com/2013/11/simple-category-pages-with-vanilla-jekyll/ -->
+<h1>Simple Category Pages with vanilla Jekyll</h1>
+
+{% unless page.content == '' %}
+  <p>{{ page.content }}</p>
+{% endunless %}
+
+{{ page.type }} 
+
+{% for post in site.categories.[page.type] %}
+  <h2><a href="{{ post.url | prepend: site.baseurl }}"">{{ post.title }}</a></h2>
+  <p>{{ post.title }} </p>
+{% endfor %}
