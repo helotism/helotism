@@ -1,0 +1,10 @@
+[Unit]
+Description=An GPIO interrupt listener for a debounced button press to trigger an action.
+After=local-fs.target
+
+[Service]
+Type=simple
+ExecStart=/bin/bash -c 'cd /opt/helotism/powersupply-env; source bin/activate; python ./mraa_interrupt.py'
+
+[Install]
+WantedBy=multi-user.target

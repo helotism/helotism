@@ -1,0 +1,6 @@
+.sass-cache
+.jekyll-metadata
+business/marketing/website/_site
+Gemfile.lock
+data/incoming/**/*tar.gz
+tmp/*
