@@ -6,12 +6,9 @@ To install a minimal cluster with a minumum of hassle this project provides an i
 - a central master server
 - several nodes
 
-These need to be connected with a switch and powered as usual.
+The scope of this installation is to reduce the system administration aspects of networking, time synchronisation and storage.
 
-It is recommended to add:
-
-- a RTC clock via I2C
-- a button that triggers a shutdown of all connected nodes
+![in scope of helotism](./business/marketing/images/helotism-scope.png)
 
 The master server is also a node by default, but additionally provides
 
