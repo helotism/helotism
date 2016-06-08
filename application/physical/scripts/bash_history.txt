@@ -9,3 +9,11 @@ _TOPSLSSTRING='base:\n';path=application/physical/saltstack/srv/salt; for role i
 python3 -c 'import crypt; print(crypt.crypt("helotism", crypt.mksalt(crypt.METHOD_SHA512)))'
 mkpasswd --method=sha-512 --salt=vb1tLY1qiY helotism
 
+gsettings set org.gnome.desktop.media-handling automount-open 'false'
+
+wmctrl -r :SELECT: -e 0,10,10,854,480
+wmctrl -l -G
+ffmpeg -video_size 854x480 -framerate 30 -f x11grab -i :0.0+75,62 -c:v libx264 -qp 0 -preset ultrafast capture.mkv
+PS1="cloned repo $"
+ffmpeg -video_size 854x480 -framerate 30 -f x11grab -i :0.0+75,62 -c:v libx264 -qp 0 -preset ultrafast /home/cpr/helotism/data/screencapture_bootstrap-arch_$(date +%Y%m%d_%H%M%S ).mkv
+

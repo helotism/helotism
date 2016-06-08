@@ -494,7 +494,7 @@ EOF
     <trim />
     <trim />    dhcp-authoritative: True
     <trim />    dhcp-range:
-    <trim />      - ${__DHCPRANGESTARTIP},${__DHCPRANGESTARTIP},12h
+    <trim />      - ${__DHCPRANGESTARTIP},${__DHCPRANGEENDIP},12h
     <trim />
     <trim />    dhcp-option:
     <trim />      - 3, 0.0.0.0

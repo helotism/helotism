@@ -329,11 +329,12 @@ echo $'{\x25 load_yaml as vars \x25}' > ./tmp/srv_pillar_helotism.sls
 echo "helotism:" >> ./tmp/srv_pillar_helotism.sls
 dt=$(date --utc +%FT%TZ)
 echo "  __datetimegenerated: \"${dt}\"" >> ./tmp/srv_pillar_helotism.sls;
-for v in __GITREMOTEORIGINURL __FQDNNAME __MASTERHOSTNAME  __MASTERIP __NETWORKSEGMENTCIDR __NETWORKPREFIX __NETWORKSEGMENT __DHCPRANGESTARTIP __DHCPRANGEENDIP __COUNT __HOSTNAMEPREFIX; do
+
+for v in __GITREMOTEORIGINURL __GITREMOTEORIGINBRANCH __FQDNNAME __MASTERHOSTNAME  __MASTERIP __NETWORKSEGMENTCIDR __NETWORKPREFIX __NETWORKSEGMENT __DHCPRANGESTARTIP __DHCPRANGEENDIP __COUNT __HOSTNAMEPREFIX; do
   output="${v}: \"${!v}\""
   echo "  ${output}" >> ./tmp/srv_pillar_helotism.sls;
 done
-echo '{\x25 endload \x25}' >> ./tmp/srv_pillar_helotism.sls
+echo $'{\x25 endload \x25}' >> ./tmp/srv_pillar_helotism.sls
 echo -e '\n{{ vars }}' >> ./tmp/srv_pillar_helotism.sls
 #echo '{# https://github.com/saltstack/salt/issues/6955#issuecomment-110793057 #}' >> ./tmp/srv_pillar_helotism.sls
 
