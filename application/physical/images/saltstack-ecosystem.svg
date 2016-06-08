@@ -17,7 +17,7 @@
    version="1.1"
    inkscape:version="0.91 r13725"
    sodipodi:docname="saltstack-ecosystem.svg"
-   inkscape:export-filename="C:\Users\christian.prior\Desktop\helotism\application\physical\images\saltstack-ecosystem.png"
+   inkscape:export-filename="C:\Users\christian.prior\Desktop\helotism\helotism\application\physical\images\saltstack-ecosystem.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
@@ -180,11 +180,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.4828125"
+     inkscape:zoom="0.5078125"
      inkscape:cx="320"
      inkscape:cy="180"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer2"
      showgrid="false"
      units="px"
      inkscape:window-width="884"
@@ -205,6 +205,18 @@
       </cc:Work>
     </rdf:RDF>
   </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="bg">
+    <rect
+       style="display:inline;fill:#fdf6e3;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="rect5285"
+       width="640"
+       height="360"
+       x="0"
+       y="-1.0848045e-005" />
+  </g>
   <g
      inkscape:label="Ebene 1"
      inkscape:groupmode="layer"
