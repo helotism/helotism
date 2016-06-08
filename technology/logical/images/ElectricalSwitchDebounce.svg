@@ -15,7 +15,10 @@
    id="svg6810"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="debounce.svg">
+   sodipodi:docname="ElectricalSwitchDebounce.svg"
+   inkscape:export-filename="C:\Users\christian.prior\Desktop\helotism\helotism\technology\logical\images\ElectricalSwitchDebounce.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
   <defs
      id="defs6812" />
   <sodipodi:namedview
@@ -25,16 +28,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.35"
-     inkscape:cx="-335"
-     inkscape:cy="520"
+     inkscape:zoom="2.1265625"
+     inkscape:cx="320"
+     inkscape:cy="120"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer2"
      showgrid="false"
      units="px"
-     inkscape:window-width="1366"
-     inkscape:window-height="705"
-     inkscape:window-x="-4"
+     inkscape:window-width="1920"
+     inkscape:window-height="1061"
+     inkscape:window-x="1362"
      inkscape:window-y="-4"
      inkscape:window-maximized="1" />
   <metadata
@@ -45,10 +48,23 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="bg">
+    <rect
+       style="fill:#fdf6e3;fill-rule:evenodd;stroke:none;stroke-width:0.79291385px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+       id="rect4139"
+       width="639.20709"
+       height="239.20709"
+       x="0.39645693"
+       y="812.75867"
+       transform="translate(0,-812.36216)" />
+  </g>
   <g
      inkscape:label="Ebene 1"
      inkscape:groupmode="layer"
