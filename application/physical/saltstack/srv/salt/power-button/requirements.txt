@@ -1,0 +1,4 @@
+gpiozero==1.2.0                                                                    
+RPi.GPIO==0.6.2                                                                    
+spidev==3.2                                                                        
+systemdream==0.0.2 

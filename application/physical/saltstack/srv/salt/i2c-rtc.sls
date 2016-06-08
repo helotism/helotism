@@ -9,10 +9,11 @@ making the i2c-tools programs a requirement:
 loading the devicetree:
   file.line:
     - name: /boot/config.txt
-    - content: device_tree=bcm2710-rpi-3-b.dtb
+    - content: device_tree=bcm2709-rpi-2-b.dtb
     - mode: Replace
+#    - content: device_tree=bcm2710-rpi-3-b.dtb
 
-setting the sevicetree params:
+setting the devicetree params:
   file.line:
     - name: /boot/config.txt
     - content: dtparam=i2c

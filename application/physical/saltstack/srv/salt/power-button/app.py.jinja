@@ -1,0 +1,24 @@
+#!/usr/bin/env python2
+
+import time
+from gpiozero import Button
+from systemdream import journal #virtualenv-capable systemd journal (only journal!) Python code
+import salt.client
+
+journal.send('power-button script initialized')
+
+def do_shutdown():
+  local = salt.client.LocalClient()
+  journal.send('Button on GPIO24 pressed, DEBOUNCED.', FIELD2='GPIO24')
+  local.cmd_async('not {{ delayedhost }}', 'cmd.run', ['shutdown -h 1'], expr_form='compound')
+  local.cmd_async('{{ delayedhost }}', 'cmd.run', ['shutdown -h 2'])
+  journal.send('Commands were sent.', FIELD2='GPIO24')
+    
+button = Button(24, bounce_time=2)
+button.when_released = do_shutdown
+
+try:
+  while True:
+    time.sleep(10)
+except KeyboardInterrupt:
+    print('Ctrl-C received.')

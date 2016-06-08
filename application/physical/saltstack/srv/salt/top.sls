@@ -37,7 +37,7 @@ base:
     - match: grain
     - network-router
 
-  'roles:power-switch':
+  'roles:power-button':
     - match: grain
-    - power-switch
+    - power-button
 
