@@ -16,7 +16,7 @@
    version="1.1"
    inkscape:version="0.91 r13725"
    sodipodi:docname="boards.svg"
-   inkscape:export-filename="/run/user/1000/gvfs/mtp:host=%5Busb%3A002%2C004%5D/SD card/cpr_reference/cpr_diy/helotism/boards.png"
+   inkscape:export-filename="C:\Users\christian.prior\Desktop\bitmap.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
@@ -28,18 +28,18 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.0333287"
-     inkscape:cx="327.28522"
-     inkscape:cy="201.71186"
+     inkscape:zoom="0.49166667"
+     inkscape:cx="240"
+     inkscape:cy="240"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer2"
      showgrid="true"
      units="px"
      showguides="false"
-     inkscape:window-width="1553"
-     inkscape:window-height="713"
-     inkscape:window-x="1632"
-     inkscape:window-y="179"
+     inkscape:window-width="1320"
+     inkscape:window-height="436"
+     inkscape:window-x="1626"
+     inkscape:window-y="617"
      inkscape:window-maximized="0">
     <inkscape:grid
        type="axonomgrid"
@@ -56,10 +56,22 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="bg">
+    <rect
+       style="fill:#fdf6e3;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+       id="rect5031"
+       width="519.61523"
+       height="500"
+       x="-17.320507"
+       y="-9.9999895" />
+  </g>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"

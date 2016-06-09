@@ -15,6 +15,10 @@ theme: solarized
 http://www.helotism.de \ ⏎<br />
 /business/marketing/presentation/piandmore_2016-06-11
 </a></p>
+
+<h2>Helotism</h2>
+Wiktionary.org: Helotism (zoology): A form of mutualism in which one species is forced to perform tasks for another, for their mutual benefit.
+
 </section>
 
 <section data-markdown>
@@ -52,7 +56,7 @@ https://github.com/helotism/helotism
 
 Installer script for a 250€-cluster solving basic sysadmin requirements
 
-![]({{ "/business/marketing/images/helotism-scope.png" | prepend: site.baseurl }})
+![]({{ "/business/marketing/images/helotism-scope.svg" | prepend: site.baseurl }})
 </section>
 
 <section data-domain="technology">
@@ -130,7 +134,7 @@ $(document).ready(function() {
 <section data-markdown>
 ## Bootstrap script ##
 
-![]({{ "/application/physical/images/customization-workflow.png" | prepend: site.baseurl }})
+![]({{ "/application/physical/images/customization-workflow.svg" | prepend: site.baseurl }})
 </section>
 
 <section data-markdown>
@@ -206,17 +210,17 @@ Caveat: GPIO-pins are no USB ports ;)
 
 <section data-markdown data-domain="technology">
 ##Noise
-![]({{ "/technology/logical/images/ElectricalWireNoise.png" | prepend: site.baseurl }})
+![]({{ "/technology/logical/images/ElectricalWireNoise.svg" | prepend: site.baseurl }})
 </section>
 
 <section data-markdown data-domain="technology">
 ##Discretization
-![]({{ "/technology/logical/images/ElectricalDiscretization.png" | prepend: site.baseurl }})
+![]({{ "/technology/logical/images/ElectricalDiscretization.svg" | prepend: site.baseurl }})
 </section>
 
 <section data-markdown data-domain="technology">
 ##Debouncing
-![]({{ "/technology/logical/images/ElectricalSwitchDebounce.png" | prepend: site.baseurl }})
+![]({{ "/technology/logical/images/ElectricalSwitchDebounce.svg" | prepend: site.baseurl }})
 </section>
 
 <section data-markdown data-domain="technology">
@@ -270,7 +274,7 @@ WantedBy=multi-user.target
 
 <section data-markdown data-domain="application">
 ##SaltStack Ecosystem
-![]({{ "/application/physical/images/saltstack-ecosystem.png" | prepend: site.baseurl }})
+![]({{ "/application/physical/images/saltstack-ecosystem.svg" | prepend: site.baseurl }})
 </section>
 
 <section data-markdown data-domain="application">
