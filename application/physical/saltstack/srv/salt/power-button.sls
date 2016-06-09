@@ -32,7 +32,7 @@ Finally the Python script itself:
     - name: /opt/helotism/power-button_venv/app.py
     - template: jinja
     - context:
-      delayedhost: {{ salt['pillar.get']('helotism:__MASTERHOSTNAME:', 'axle') }}
+      delayedhost: {{ salt['pillar.get']('helotism:__MASTERHOSTNAME', 'axle') }}
     - user: root
     - group: root
     - mode: 744
