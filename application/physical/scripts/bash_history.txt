@@ -17,3 +17,6 @@ ffmpeg -video_size 854x480 -framerate 30 -f x11grab -i :0.0+75,62 -c:v libx264 -
 PS1="cloned repo $"
 ffmpeg -video_size 854x480 -framerate 30 -f x11grab -i :0.0+75,62 -c:v libx264 -qp 0 -preset ultrafast /home/cpr/helotism/data/screencapture_bootstrap-arch_$(date +%Y%m%d_%H%M%S ).mkv
 
+rm ./application/physical/systemd/etc/systemd/timesyncd.conf; rm ./application/physical/systemd/etc/systemd/resolved.conf; rm ./application/physical/systemd/etc/systemd/network/70_rpi-3-b_usbports.network; rm ./application/physical/systemd/etc/systemd/network/70_rpi-3-b_usbports.link; rm ./application/physical/systemd/etc/systemd/network/20_rpi-3-b_ethernetport.router.network; rm ./application/physical/systemd/etc/systemd/network/20_rpi-3-b_ethernetport.nonrouter.network; rm ./application/physical/systemd/etc/systemd/network/20_rpi-3-b_ethernetport.link; rm ./application/physical/saltstack/srv/pillar/ntp-server.sls; rm ./application/physical/saltstack/srv/pillar/dhcp-server.sls; rm ./application/physical/saltstack/etc/salt/master.d/90_gitfs_remotes.conf; rm ./application/physical/saltstack/etc/salt/master.d/90_fileserver_backend.conf; rm ./application/physical/saltstack/etc/salt/master.d/90_ext_pillar.conf;
+
+

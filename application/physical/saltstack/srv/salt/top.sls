@@ -21,10 +21,6 @@ base:
     - match: grain
     - i2c-rtc
 
-  'roles:dns-server':
-    - match: grain
-    - dns-server
-
   'roles:ntp-server':
     - match: grain
     - ntp-server

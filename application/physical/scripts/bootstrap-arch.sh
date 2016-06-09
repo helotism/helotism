@@ -338,31 +338,6 @@ echo $'{\x25 endload \x25}' >> ./tmp/srv_pillar_helotism.sls
 echo -e '\n{{ vars }}' >> ./tmp/srv_pillar_helotism.sls
 #echo '{# https://github.com/saltstack/salt/issues/6955#issuecomment-110793057 #}' >> ./tmp/srv_pillar_helotism.sls
 
-#/**
-#  * Printing to the screen what will be done next.
-#  *
-#  */
-
-#if [ ! -f "./application/physical/scripts/sdcardsetup.sh" ]; then
-#  echo "./application/physical/scripts/sdcardsetup.sh not found. Downloading.";
-#  #@TODO: Never forget to push to gh-pages.
-#  #@TODO: Or rewrite everything to fully checkout the repo. Maybe a bit bloated.
-#  if [ ! -d ./application/physical/scripts ]; then mkdir -p ./application/physical/scripts ; fi
-#  curl -o ./application/physical/scripts/sdcardsetup.sh http://cprior.github.io/test/application/physical/scripts/sdcardsetup.sh
-#  #exit;
-#else
-#  i=0; j=0;
-#  while [ ${i} -lt ${__COUNT} ]; do
-#    j=$(( $j + 1 ))
-#    if [ $i -eq 0 ];then
-#      echo "The master node will be on SD card no. ${j}: ${__MASTERHOSTNAME}"
-#    else
-#      echo "SD card no. ${j} will become: ${__HOSTNAMEPREFIX}${i}"
-#    fi
-#    i=$(( $i + 1 ))
-#  done
-#fi;
-#echo -n "."; sleep 1; echo -n "."; sleep 1; echo -n ".";
 
 #/**
 #  * Now calling the setupscript for individual SD cards
