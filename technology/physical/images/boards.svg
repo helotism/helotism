@@ -29,7 +29,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.34766083"
-     inkscape:cx="155.14362"
+     inkscape:cx="-559.63348"
      inkscape:cy="204.1861"
      inkscape:document-units="px"
      inkscape:current-layer="layer2"
@@ -37,9 +37,9 @@
      units="px"
      showguides="false"
      inkscape:window-width="1320"
-     inkscape:window-height="436"
-     inkscape:window-x="1613"
-     inkscape:window-y="643"
+     inkscape:window-height="504"
+     inkscape:window-x="1627"
+     inkscape:window-y="540"
      inkscape:window-maximized="0">
     <inkscape:grid
        type="axonomgrid"
@@ -63,9 +63,10 @@
   <g
      inkscape:groupmode="layer"
      id="layer2"
-     inkscape:label="bg">
+     inkscape:label="bg"
+     style="display:none">
     <rect
-       style="fill:#fdf6e3;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+       style="fill:#fdf6e3;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        id="rect5031"
        width="519.61523"
        height="500"

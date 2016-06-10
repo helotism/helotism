@@ -1,6 +1,9 @@
 ---
 title: Anatomy of the Bootstrap Script
+layout: default
 ---
+
+#  Anatomy of the Bootstrap Script #
 
 The script needs to be run on a Linux installation and was tested with bash.
 
