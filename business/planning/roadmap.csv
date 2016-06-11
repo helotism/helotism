@@ -1,8 +1,8 @@
-ID,iteration,completion,prerequisites,goal,requirements,business,data,application,technology,opportunities,migration plan,implementation,lessons learned
-1,bootstrap,100,,privatize technological progress for future-proof understanding,"solid sysadmin skillset, time (=opportunity costs)",,,,,,,,powerful config management solution enable high complexity projects
-2,init,70,1,"develop and construct a cluster in a smallish form factor, keep reasonable diversity",to save the SD cards,purchase parts,"user data, network scheme, dimensions of parts",setup configuration management configure network,"build a rack with power supply, select boards, install storage, make timeserver available",,,,"confisung (see?) market of development boards, public software development is great"
-3,consolidation,30,2,"document the progress in a streamlined fashion, make the cluster mangeable, break down the lessons learned",,"website and presentation, infographics",,,"central logserver, central monitoring, status indicator lights",,,,
-4,sidestep,30,1,Internet of Things and robots with microcontrollers: Align the cluster with typical german industry products on a lower mechatronic level,,,,,,,,,
-5,data-analysis,10,3,"apply the new toolset to sample tasks of distributed computing, visualization and data warehouse architectures",,,,"d3.js, elasticsearch",,,,,
-6,learning,0,3,Methodologically align this project with LPI exam objectives to prepare for a LPI certification sweep,,,,,,,,,
-7,scale down,10,3,Condense the project into an easily reproduceable outcome,take access to production-grade machining out of the equation,,,,,,,,
+"ID","iteration","completion","prerequisites","goal","requirements","business","data","application","technology","opportunities","migration plan","implementation","lessons learned"
+1,"bootstrap",100,,"privatize technological progress for future-proof understanding","solid sysadmin skillset, time (=opportunity costs)",,,,,,,,"powerful config management solution enable high complexity projects"
+2,"init",70,1,"develop and construct a cluster in a smallish form factor, keep reasonable diversity","to save the SD cards","purchase parts","user data, network scheme, dimensions of parts","setup configuration management configure network","build a rack with power supply, select boards, install storage, make timeserver available",,,,"confisung (see?) market of development boards, public software development is great"
+3,"consolidation",30,2,"document the progress in a streamlined fashion, make the cluster mangeable, break down the lessons learned",,"website and presentation, infographics",,,"central logserver, central monitoring, status indicator lights",,,,
+4,"sidestep",30,1,"Internet of Things and robots with microcontrollers: Align the cluster with typical german industry products on a lower mechatronic level",,,,,,,,,
+5,"data-analysis",10,3,"apply the new toolset to sample tasks of distributed computing, visualization and data warehouse architectures",,,,"d3.js, elasticsearch",,,,,
+6,"learning",0,3,"Methodologically align this project with LPI exam objectives to prepare for a LPI certification sweep",,,,,,,,,
+7,"scale down",100,3,"Condense the project into an easily reproduceable outcome","take access to production-grade machining out of the equation",,,,,,,,
