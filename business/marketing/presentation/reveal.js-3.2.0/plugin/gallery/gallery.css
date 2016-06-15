@@ -60,7 +60,7 @@
 .gallery label {
 	display: block;
 	position: absolute;
-	top: 20px;
+	bottom: -20px;
 	min-width: 150px;
 	left: 0;
 	padding: 10px;
