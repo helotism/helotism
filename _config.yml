@@ -31,8 +31,7 @@ destination:  ./business/marketing/website/_site
 data_dir:     ./data
 
 exclude: 
-  - apperlication #_physical
-  - tecKnology
+  - tmp/
 
 sass:
     sass_dir: ./business/marketing/website/assets/_sass
