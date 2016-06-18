@@ -1,0 +1,228 @@
+# config file by saltmaster
+# 2 internet sources:
+# - https://wiki.archlinux.org/index.php/Pacman/Tips_and_tricks
+#   the the chapter at #Dynamic_reverse_proxy_cache_using_nginx
+# - https://wiki.gentoo.org/wiki/Nginx
+
+user nginx nginx;
+worker_processes 1;
+  
+error_log /var/log/nginx/error_log info;
+  
+events {
+        worker_connections 1024;
+        use epoll;
+}
+
+http
+{
+    # nginx may need to resolve domain names at run time
+    #resolver 8.8.8.8 8.8.4.4;
+    #{{ salt['pillar.get']('helotism:__MASTERIP', '127.0.0.1') }}
+    resolver {{ salt['pillar.get']('helotism:__MASTERIP', '127.0.0.1') }} 8.8.8.8 8.8.4.4;
+
+
+        include /etc/nginx/mime.types;
+        default_type application/octet-stream;
+  
+        log_format main
+                '$remote_addr - $remote_user [$time_local] '
+                '"$request" $status $bytes_sent '
+                '"$http_referer" "$http_user_agent" '
+                '"$gzip_ratio"';
+
+        log_format upstreamlog
+            '[$time_local] $remote_addr - $remote_user - $server_name  '
+            'to: $upstream_addr: $request upstream_response_time $upstream_response_time msec $msec request_time $request_time';
+  
+        client_header_timeout 10m;
+        client_body_timeout 10m;
+        send_timeout 10m;
+  
+        connection_pool_size 256;
+        client_header_buffer_size 1k;
+        large_client_header_buffers 4 2k;
+        request_pool_size 4k;
+  
+        gzip on;
+        gzip_min_length 1100;
+        gzip_buffers 4 8k;
+        gzip_types text/plain;
+  
+        output_buffers 1 32k;
+        postpone_output 1460;
+  
+        sendfile on;
+        tcp_nopush on;
+        tcp_nodelay on;
+  
+        keepalive_timeout 75 20;
+  
+        ignore_invalid_headers on;
+  
+        index index.html;
+  
+        server {
+                listen 127.0.0.1;
+                server_name localhost;
+  
+                access_log /var/log/nginx/localhost.access_log main;
+                error_log /var/log/nginx/localhost.error_log info;
+  
+                root /srv/http/localhost/htdocs;
+        }
+
+    # Pacman Cache
+    server
+    {
+        listen      8080;
+        #server_name axle.wheel.prdv.de;
+        server_name {{ salt['pillar.get']('helotism:__MASTERHOSTNAME', 'axle') }}.{{ salt['pillar.get']('helotism:__FQDN', 'wheel.prdv.de') }};
+        root        /srv/http/pacman-cache;
+        autoindex   on;
+
+        #cache miss has to: 127.0.0.1:8001: GET /armv7....
+        #cache hit has to: -: GET /armv7h...
+        access_log /var/log/nginx/localhost-8080.access_log upstreamlog;
+        error_log /var/log/nginx/localhost-8080.error_log info;
+
+        # Requests for package db and signature files should redirect upstream without caching
+        location ~ \.(db|sig)$ {
+            proxy_pass http://mirrors$request_uri;
+        }
+
+        # Requests for actual packages should be served directly from cache if available.
+        #   If not available, retrieve and save the package from an upstream mirror.
+        location ~ \.tar\.xz$ {
+            try_files $uri @pkg_mirror;
+        }
+
+        # Retrieve package from upstream mirrors and cache for future requests
+        location @pkg_mirror {
+            proxy_store    on;
+            proxy_redirect off;
+            proxy_store_access  user:rw group:rw all:r;
+            proxy_next_upstream error timeout http_404;
+            proxy_pass          http://mirrors$request_uri;
+        }
+    }
+
+    # Apt Cache
+    server
+    {
+        listen      8081;
+        #server_name axle.wheel.prdv.de;
+        server_name {{ salt['pillar.get']('helotism:__MASTERHOSTNAME', 'axle') }}.{{ salt['pillar.get']('helotism:__FQDN', 'wheel.prdv.de') }};
+        root        /srv/http/apt-cache;
+        autoindex   on;
+
+        #access_log /var/log/nginx/localhost-8081.access_log main;
+        access_log /var/log/nginx/localhost-8080.access_log upstreamlog;
+        error_log /var/log/nginx/localhost-8081.error_log info;
+
+        # Requests for package db and signature files should redirect upstream without caching
+        location ~ \.(db|sig|Packages|Release)$ {
+            proxy_pass http://mirrors$request_uri;
+            #proxy_pass http://mirror.netcologne.de$request_uri;
+        }
+
+        # Requests for actual packages should be served directly from cache if available.
+        #   If not available, retrieve and save the package from an upstream mirror.
+       location ~ \.(deb|tar\.xz)$ {
+           try_files $uri @pkg_mirror;
+       }
+
+       location @pkg_mirror {
+           #http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_store
+           #This directive can be used to create local copies of static unchangeable files
+           proxy_store    on;
+           proxy_redirect off;
+           proxy_store_access  user:rw group:rw all:r;
+           proxy_next_upstream error timeout http_404;
+           #proxy_pass          http://mirror.netcologne.de$request_uri;
+           proxy_pass          http://mirrors2$request_uri;
+       }
+#        location / {
+#            proxy_pass       http://mirror.netcologne.de$request_uri;
+#            proxy_set_header Host mirror.netcologne.de;
+#        }
+    }
+
+    # Upstream Arch Linux Mirrors
+    # - Configure as many backend mirrors as you want in the blocks below
+    # - Servers are used in a round-robin fashion by nginx
+    # - Add "backup" if you want to only use the mirror upon failure of the other mirrors
+    # - Separate "server" configurations are required for each upstream mirror so we can set the "Host" header appropriately
+    upstream mirrors {
+        server localhost:8001;
+        server localhost:8002 backup;
+        server localhost:8003 backup;
+    }
+
+    # Arch Mirror 1 Proxy Configuration
+    server
+    {
+        listen      8001;
+        server_name localhost;
+
+        location / {
+            proxy_pass       http://de3.mirror.archlinuxarm.org$request_uri;
+            proxy_set_header Host de3.mirror.archlinuxarm.org;
+        }
+    }
+
+    # Arch Mirror 2 Proxy Configuration
+    server
+    {
+        listen      8002;
+        server_name localhost;
+
+        location / {
+            proxy_pass       http://nl.mirror.archlinuxarm.org$request_uri;
+            proxy_set_header Host nl.mirror.archlinuxarm.org;
+        }
+    }
+
+    # Arch Mirror 3 Proxy Configuration
+    server
+    {
+        listen      8003;
+        server_name localhost;
+
+        location / {
+            proxy_pass       http://de.mirror.archlinuxarm.org$request_uri;
+            proxy_set_header Host de.mirror.archlinuxarm.org;
+        }
+    }
+
+    upstream mirrors2 {
+        server localhost:8005;
+        server localhost:8004 backup;
+    }
+
+    # Apt Mirror 1 Proxy Configuration
+    server
+    {
+        listen      8004;
+        server_name localhost;
+
+        location / {
+            proxy_pass       http://mirror.netcologne.de$request_uri;
+            proxy_set_header Host mirror.netcologne.de;
+        }
+    }
+
+    # Apt Mirror 2 Proxy Configuration
+    server
+    {
+        listen      8005;
+        server_name localhost;
+
+        location / {
+            proxy_pass       http://mirror.de.leaseweb.net$request_uri;
+            proxy_set_header Host mirror.de.leaseweb.net;
+        }
+    }
+
+}
+
