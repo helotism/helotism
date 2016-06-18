@@ -1,0 +1,11 @@
+[Unit]
+Description = Western Digital Pi Drive 314GB
+
+[Mount]
+What = /mnt/sda2/http
+Where = /srv/http
+Type = ext4
+Options = bind
+
+[Install]
+WantedBy = multi-user.target

@@ -1,0 +1,8 @@
+[Unit]
+Description = Western Digital Pi Drive 314GB
+
+[Automount]
+Where = /srv/http
+
+[Install]
+WantedBy = multi-user.target
