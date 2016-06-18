@@ -263,9 +263,9 @@ if [ ! -f ./application/physical/systemd/etc/systemd/network/70_rpi-3-b_usbports
     <trim />Path=platform-3f980000.usb-usb-0:1.[2345]:1.0
     <trim />
     <trim />[Link]
-    <trim />MACAddressPolicy=random
-    <trim />NamePolicy=mac
-    <trim />#Name=lan4
+    <trim />#MACAddressPolicy=random
+    <trim />#NamePolicy=mac
+    <trim />Name=usbwan0
 EOF
   $_SUDO cp ./tmp/root/etc/systemd/network/70_rpi-3-b_usbports.link ./application/physical/systemd/etc/systemd/network/70_rpi-3-b_usbports.link
 else
@@ -275,16 +275,55 @@ fi
 if [ ! -f ./application/physical/systemd/etc/systemd/network/70_rpi-3-b_usbports.network ]; then #not in a cloned/forked repo
 sed 's/^[ ]*<trim \/>//' <<EOF | $_SUDO tee ./tmp/root/etc/systemd/network/70_rpi-3-b_usbports.network > /dev/null
   <trim />[Match]
-  <trim />Name=en*
+  <trim />Name=usbwan0
+  <trim />Path=platform-3f980000.usb-usb-0:1.[2345]:1.0
+  <trim />
+  <trim />[Network]
+  <trim />DHCP=ipv4
+  <trim />IPv6AcceptRouterAdvertisements=0
+  <trim />
+  <trim />[Address]
+  <trim />Label=usbwan0:0
+  <trim />Address=${__MASTERHOSTNAME%.*}.2
+  <trim />
+  <trim />#use this to set your own alias IP
+  <trim />#[Address]
+  <trim />#Label=usbwan0:1
+  <trim />#Address=aaa.bbb.ccc.ddd
+EOF
+  $_SUDO cp ./tmp/root/etc/systemd/network/70_rpi-3-b_usbports.network ./application/physical/systemd/etc/systemd/network/70_rpi-3-b_usbports.network
+else
+  $_SUDO cp ./application/physical/systemd/etc/systemd/network/70_rpi-3-b_usbports.network ./tmp/root/etc/systemd/network/70_rpi-3-b_usbports.network
+fi
+
+#the network for an EDIMAX WiFi dongle
+if [ ! -f ./application/physical/systemd/etc/systemd/network/50_rpi-3-b_usbports-edimax.link ]; then #not in a cloned/forked repo
+  sed 's/^[ ]*<trim \/>//' <<EOF | $_SUDO tee ./tmp/root/etc/systemd/network/50_rpi-3-b_usbports-edimax.link > /dev/null
+    <trim />[Match]
+    <trim />Path=platform-3f980000.usb-usb-0:1.[2345]:1.0
+    <trim />Driver=rtl8192cu
+    <trim />
+    <trim />[Link]
+    <trim />Name=wifiwan0
+EOF
+  $_SUDO cp ./tmp/root/etc/systemd/network/50_rpi-3-b_usbports-edimax.link ./application/physical/systemd/etc/systemd/network/50_rpi-3-b_usbports-edimax.link
+else
+  $_SUDO cp ./application/physical/systemd/etc/systemd/network/50_rpi-3-b_usbports-edimax.link ./tmp/root/etc/systemd/network/50_rpi-3-b_usbports-edimax.link
+fi
+
+if [ ! -f ./application/physical/systemd/etc/systemd/network/50_rpi-3-b_usbports-edimax.network ]; then #not in a cloned/forked repo
+sed 's/^[ ]*<trim \/>//' <<EOF | $_SUDO tee ./tmp/root/etc/systemd/network/50_rpi-3-b_usbports-edimax.network > /dev/null
+  <trim />[Match]
+  <trim />Name=wifiwan0
   <trim />Path=platform-3f980000.usb-usb-0:1.[2345]:1.0
   <trim />
   <trim />[Network]
   <trim />DHCP=ipv4
   <trim />IPv6AcceptRouterAdvertisements=0
 EOF
-  $_SUDO cp ./tmp/root/etc/systemd/network/70_rpi-3-b_usbports.network ./application/physical/systemd/etc/systemd/network/70_rpi-3-b_usbports.network
+  $_SUDO cp ./tmp/root/etc/systemd/network/50_rpi-3-b_usbports-edimax.network ./application/physical/systemd/etc/systemd/network/70_rpi-3-b_usbports-edimax.network
 else
-  $_SUDO cp ./application/physical/systemd/etc/systemd/network/70_rpi-3-b_usbports.network ./tmp/root/etc/systemd/network/70_rpi-3-b_usbports.network
+  $_SUDO cp ./application/physical/systemd/etc/systemd/network/70_rpi-3-b_usbports-edimax.network ./tmp/root/etc/systemd/network/70_rpi-3-b_usbports-edimax.network
 fi
 
 #the network on the ethernet port
