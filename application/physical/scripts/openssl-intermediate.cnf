@@ -7,17 +7,17 @@ default_ca = CA_default
 
 [ CA_default ]
 # Directory and file locations.
-dir               = /cygdrive/c/Users/christian.prior/Desktop/openssltests/script1/helotism-intermediate-CA
-certs             = $dir/certs
+dir               = /cygdrive/c/Users/christian.prior/Desktop/openssltests/script1/helotism-intermediate-ca
+certs             = $dir/public-certs
 crl_dir           = $dir/crl
 new_certs_dir     = $dir/newcerts
 database          = $dir/index
 serial            = $dir/serial
-RANDFILE          = $dir/private/.rand
+RANDFILE          = $dir/private-keys/.rand
 
 # The root key and root certificate.
-private_key       = $dir/private/intermediate.key.pem
-certificate       = $dir/certs/intermediate.cert.pem
+private_key       = $dir/private-keys/intermediate.key.pem
+certificate       = $dir/public-certs/intermediate.cert.pem
 
 # For certificate revocation lists.
 crlnumber         = $dir/crlnumber
@@ -118,6 +118,7 @@ subjectKeyIdentifier = hash
 authorityKeyIdentifier = keyid,issuer:always
 keyUsage = critical, digitalSignature, keyEncipherment
 extendedKeyUsage = serverAuth
+#crlDistributionPoints = URI:http://localhost:8000/intermediate.crl.pem
 
 [ crl_ext ]
 # Extension for CRLs (`man x509v3_config`).

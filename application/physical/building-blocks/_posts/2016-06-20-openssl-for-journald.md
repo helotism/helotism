@@ -89,3 +89,148 @@ http://security.stackexchange.com/questions/31607/how-to-set-not-before-value-to
 openssl ca -batch -config ca.conf -startdate 20160101000000 -enddate 20251231235959 -notext -in $SERVER.csr -out $SERVER.pem
 
 
+
+
+
+$ docker  pull centos:7
+7: Pulling from library/centos
+
+a3ed95caeb02: Pull complete
+da71393503ec: Pull complete
+Digest: sha256:a9237ff42b09cc6f610bab60a36df913ef326178a92f3b61631331867178f982
+Status: Downloaded newer image for centos:7
+
+docker commit -m "Installed openssl." -a 'Christian Prior' 8517f51f1e41 cpr/centos7
+
+docker run cpr/centos7 openssl version -d
+OPENSSLDIR: "/etc/pki/tls"
+
+
+
+
+
+
+cpr@T500-2016:~$ docker pull opensuse:leap
+leap: Pulling from library/opensuse
+
+Digest: sha256:7cbe1898a4612cdea9dd03770f4f1e3e95393412313a9a40c61d8c0144edba92
+Status: Image is up to date for opensuse:leap
+cpr@T500-2016:~$ docker run opensuse:leap openssl version -d
+OPENSSLDIR: "/etc/ssl"
+
+
+
+docker pull fedora:24
+24: Pulling from library/fedora
+
+7c91a140e7a1: Pull complete
+Digest: sha256:a97914edb6ba15deb5c5acf87bd6bd5b6b0408c96f48a5cbd450b5b04509bb7d
+Status: Downloaded newer image for fedora:24
+
+docker run fedora:24 openssl version -d
+Yum command has been deprecated, redirecting to '/usr/bin/dnf install -y openssl'.
+
+docker commit -m "Installed openssl." -a 'Christian Prior' $(docker ps -l -q) cpr/fedora24
+sha256:ce5733e6c3c161ead18a28d1222d98320d0e34c09c6fcc483dc295d2d66f7daf
+cpr@T500-2016:~$ docker run cpr/fedora24 openssl version -d
+OPENSSLDIR: "/etc/pki/tls"
+
+
+
+docker pull debian:jessie
+jessie: Pulling from library/debian
+
+Digest: sha256:8b1fc3a7a55c42e3445155b2f8f40c55de5f8bc8012992b26b570530c4bded9e
+Status: Image is up to date for debian:jessie
+
+docker run debian:jessie /bin/bash -c "apt-get update && apt-get upgrade && apt-get --assume-yes  install openssl"
+
+docker commit -m "Installed openssl." -a 'Christian Prior' $(docker ps -l -q) cpr/debianjessie
+sha256:8d1c299156874ca27aa55875816a44db78f1efdc73b3d9bdbb3ee2d42155550e
+
+docker run cpr/debianjessie openssl version -d
+OPENSSLDIR: "/usr/lib/ssl"
+
+
+
+
+cpr@T500-2016:~$ docker pull base/archlinux
+Using default tag: latest
+latest: Pulling from base/archlinux
+
+a3ed95caeb02: Already exists
+80ab36053684: Already exists
+Digest: sha256:7905fad7578b9852999935fb0ba9c32fe16cece9e4d1d742a34f55ce9cebdfd1
+Status: Image is up to date for base/archlinux:latest
+cpr@T500-2016:~$ docker run base/archlinux:latest openssl version -d
+OPENSSLDIR: "/etc/ssl"
+cpr@T500-2016:~$ 
+
+
+
+docker pull gentoo/portage
+docker pull gentoo/stage3-amd64
+docker create -v /usr/portage --name portage gentoo/portage
+docker run --volumes-from portage -it gentoo/stage3-amd64 /bin/bash -c "openssl version -d"
+OPENSSLDIR: "/etc/ssl"
+
+
+
+
+
+
+
+
+
+for di in cpr/centos7 cpr/opensuseleap cpr/fedora24 cpr/debianjessie cpr/archlinuxlatest; do echo ${di}; docker run ${di} openssl version -d; echo ""; done
+cpr/centos7
+OPENSSLDIR: "/etc/pki/tls"
+
+cpr/opensuseleap
+OPENSSLDIR: "/etc/ssl"
+
+cpr/fedora24
+OPENSSLDIR: "/etc/pki/tls"
+
+cpr/debianjessie
+OPENSSLDIR: "/usr/lib/ssl"
+
+cpr/archlinuxlatest
+OPENSSLDIR: "/etc/ssl"
+
+
+
+
+[root@axle ~]# systemd-journal-upload --help
+-bash: systemd-journal-upload: command not found
+[root@axle ~]# /usr/lib/systemd/systemd-journal-upload --help
+systemd-journal-upload -u URL {FILE|-}...
+
+Upload journal events to a remote server.
+
+  -h --help                 Show this help
+     --version              Show package version
+  -u --url=URL              Upload to this address (default port 19532)
+     --key=FILENAME         Specify key in PEM format (default:
+                            "/etc/ssl/private/journal-upload.pem")
+     --cert=FILENAME        Specify certificate in PEM format (default:
+                            "/etc/ssl/certs/journal-upload.pem")
+     --trust=FILENAME|all   Specify CA certificate or disable checking (default:
+                            "/etc/ssl/ca/trusted.pem")
+     --system               Use the system journal
+     --user                 Use the user journal for the current user
+  -m --merge                Use  all available journals
+  -M --machine=CONTAINER    Operate on local container
+  -D --directory=PATH       Use journal files from directory
+     --file=PATH            Use this journal file
+     --cursor=CURSOR        Start at the specified cursor
+     --after-cursor=CURSOR  Start after the specified cursor
+     --follow[=BOOL]        Do [not] wait for input
+     --save-state[=FILE]    Save uploaded cursors (default 
+                            /var/lib/systemd/journal-upload/state)
+  -h --help                 Show this help and exit
+     --version              Print version string and exit
+
+
+
+
