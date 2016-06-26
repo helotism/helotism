@@ -233,4 +233,47 @@ Upload journal events to a remote server.
 
 
 
+[root@axle ~]# /usr/lib/systemd/systemd-journal-remote --listen-https=axle.wh
+eel.prdv.de 
+/usr/lib/systemd/systemd-journal-remote: error while loading shared libraries: libmicrohttpd.so.12: cannot open shared object file: No such file or directory
+
+
+Jun 13 00:11:26 axle.wheel.prdv.de systemd[1]: systemd-journal-remote.service: Failed with result 'exit-code'.
+[root@axle ~]# systemctl daemon-reload
+[root@axle ~]# systemctl restart systemd-journal-remote.service
+[root@axle ~]# systemctl status systemd-journal-remote.service
+� systemd-journal-remote.service - Journal Remote Sink Service
+   Loaded: loaded (/usr/lib/systemd/system/systemd-journal-remote.service; indirect; vendor preset: disabled)
+   Active: failed (Result: exit-code) since Mon 2016-06-13 00:11:57 UTC; 1s ago
+     Docs: man:systemd-journal-remote(8)
+           man:journal-remote.conf(5)
+  Process: 11413 ExecStart=/usr/lib/systemd/systemd-journal-remote --listen-https=-3 --output=/var/log/journal/remote/ (code=exited, status=127)
+ Main PID: 11413 (code=exited, status=127)
+
+Jun 13 00:11:57 axle.wheel.prdv.de systemd[1]: Started Journal Remote Sink Service.
+Jun 13 00:11:57 axle.wheel.prdv.de systemd[1]: systemd-journal-remote.service: Main process exited, code=exited, status=127/n/a
+Jun 13 00:11:57 axle.wheel.prdv.de systemd[1]: systemd-journal-remote.service: Unit entered failed state.
+Jun 13 00:11:57 axle.wheel.prdv.de systemd[1]: systemd-journal-remote.service: Failed with result 'exit-code'.
+[root@axle ~]# vim /etc/systemd/journal-remote.conf
+
+
+
+for h in axle spoke0{1,2,3,4} cog0{1,2,3,4}; do mkdir -p /mnt/sda2/ext_file_pillar/hosts/${h}/files/ ; cp /mnt/sda2/ca/helotism-intermediate-ca/private-keys/${h}.wheel.prdv.de.key.pem /mnt/sda2/ext_file_pillar/hosts/${h}/files/; cp /mnt/sda2/ca/helotism-intermediate-ca/public-certs/${h}.wheel.prdv.de.cert.pem /mnt/sda2/ext_file_pillar/hosts/${h}/files/; cp /mnt/sda2/ca/helotism-intermediate-ca/public-certs/helotism-ca-chained-public-certs.cert.pem /mnt/sda2/ext_file_pillar/hosts/${h}/files/; done
+
+mkdir /mnt/sda2/ext_file_pillar
+cat /etc/salt/master.d/90_ext_pillar.conf ext_pillar:
+  - git:
+    - master https://github.com/helotism/helotism.git:
+      - root: application/physical/saltstack/srv/pillar
+  - file_tree:
+      root_dir: /mnt/sda2/ext_file_pillar
+      follow_dir_links: False
+      keep_newline: True
+
+systemctl restart salt-master.service
+
+
+salt '*' saltutil.refresh_pillar
+
+
 
