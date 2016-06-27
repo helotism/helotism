@@ -58,9 +58,24 @@ virtualenv2:
     - name: python2-virtualenv
     {% endif %}
 
+{% if grains['os'] == 'Arch ARM' %}
 some dependencies on Arch Linux ARM:
   cmd.run:
     - name: pacman -S --needed --noconfirm net-tools base-devel
+
+saving time when shutting down:
+  pkg.installed:
+    - name: fake-hwclock
+
+Enable the nginx service:
+  service.running:
+    - name: fake-hwclock.service
+    - enable: true
+    - provider: systemd
+    - require:
+      - pkg: fake-hwclock
+
+{% endif %}
 
 ipython for Python2:
   pkg.installed:
