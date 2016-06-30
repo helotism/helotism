@@ -608,6 +608,8 @@ if [ ! -f ./application/physical/systemd/etc/systemd/resolved.conf ]; then
     <trim />[Resolve]
     <trim />DNS=${__MASTERIP}
     <trim />Domains=${__FQDNNAME}
+    <trim />#closes port 5355 for Link-local Multicast Name Resolution
+    <trim />LLMNR=0
 EOF
   $_SUDO cp ./tmp/root/etc/systemd/resolved.conf ./application/physical/systemd/etc/systemd/resolved.conf
 else
