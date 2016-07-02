@@ -31,6 +31,8 @@ https://jamielinux.com/docs/openssl-certificate-authority/index.html
 
 https://fedoraproject.org/wiki/Changes/Remote_Journal_Logging
 
+https://docs.google.com/document/pub?id=1IC9yOXj7j6cdLLxWEBAGRL6wl97tFxgjLUEHIX3MSTs
+https://www.loggly.com/blog/why-journald/
 
 
 openssl req -subj '/C=DE/ST=Hessen/L=Rittershausen/O=PRDV/OU=IT/CN=localhost' -x509 -nodes -days 365 -sha256   -newkey rsa:2048 -keyout mycert.key -out mycert.crt
