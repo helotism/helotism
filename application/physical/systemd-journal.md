@@ -10,10 +10,6 @@ http://thread.gmane.org/gmane.comp.sysutils.systemd.devel/6922/focus=6950
 https://www.freedesktop.org/wiki/Software/systemd/journal-files/
 
 
-# A
-
-
-
 realtime/monotonic
 
 
