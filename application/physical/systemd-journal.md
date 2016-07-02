@@ -6,7 +6,7 @@ layout: default
 
 http://thread.gmane.org/gmane.comp.sysutils.systemd.devel/6922/focus=6950
 
-"…primarily for your entertainment and education. Thank you!"
+"primarily for your entertainment and education. Thank you!"
 https://www.freedesktop.org/wiki/Software/systemd/journal-files/
 
 
