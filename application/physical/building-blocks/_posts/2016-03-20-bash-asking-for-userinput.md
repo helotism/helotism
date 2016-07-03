@@ -3,9 +3,10 @@ layout: post
 title:  "Asking for userinput with bash"
 date:   2016-03-22 20:00:00 +0100
 categories: [ application-physical_building-blocks ]
+abstract: How to ask for input in a bash script.
 ---
 
-How to ask for input in a bash script.
+There is a fine line between hardcoded values and a messy configurable script. Especially with bash scripts there is no tendency to use a config file, mainly because the standalone nature of scripts is defeated by an additional file to copy around. To have some default values set at the beginning of the script, but asking for user input to potentially overwrite these values is a user-friendly way to handle this. And maybe it makes a script a bit more self-documenting, too.
 
 This will continue as soon as the key is pressed:
 

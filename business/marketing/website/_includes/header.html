@@ -9,9 +9,10 @@
 {% if jekyll.environment == "development" %}
                 <nav>
                     <ul>
-                        <li><a href="/application/physical/installation">Install</a></li>
-                        <li><a href="#">tec</a></li>
-                        <li><a href="#">app</a></li>
+                        <li><a href="{{ "/technology/physical/parts" | prepend: site.baseurl }}">Parts</a></li>
+                        <li><a href="{{ "/application/physical/installation" | prepend: site.baseurl }}">Install</a></li>
+                        <li><a href="#">Usage</a></li>
+                        <li><a href="https://github.com/helotism/helotism/issues">Issues</a></li>
                     </ul>
                 </nav>
 {% else %}

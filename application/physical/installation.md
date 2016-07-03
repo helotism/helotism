@@ -11,11 +11,16 @@ The original repo holds a bootstrap script that asks all basic cutomization ques
 
 To install a minimal cluster the following parts are needed:
 
-- 2 or 3 Raspberry Pi 2|3 Model B
+- 2 or 3 Raspberry Pi 2\|3 Model B
+
 - 2 or 3 SD cards of 4 GB and bigger (may be different sizes)
+
 - 1 Switch, e.g. an 8-port
+
 - 1 USB Ethernet adapter
+
 - 1 power supply
+
 - cables
 
 Recommended additions are
