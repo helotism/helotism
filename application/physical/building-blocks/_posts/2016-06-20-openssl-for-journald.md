@@ -31,6 +31,8 @@ https://jamielinux.com/docs/openssl-certificate-authority/index.html
 
 https://fedoraproject.org/wiki/Changes/Remote_Journal_Logging
 
+https://docs.google.com/document/pub?id=1IC9yOXj7j6cdLLxWEBAGRL6wl97tFxgjLUEHIX3MSTs
+https://www.loggly.com/blog/why-journald/
 
 
 openssl req -subj '/C=DE/ST=Hessen/L=Rittershausen/O=PRDV/OU=IT/CN=localhost' -x509 -nodes -days 365 -sha256   -newkey rsa:2048 -keyout mycert.key -out mycert.crt
@@ -276,4 +278,38 @@ systemctl restart salt-master.service
 salt '*' saltutil.refresh_pillar
 
 
+With Python returning valid dates from certificate file
 
+https://pyopenssl.readthedocs.io/en/latest/api/crypto.html
+http://nullege.com/codes/search/OpenSSL.crypto.load_certificate
+http://blog.tunnelshade.in/2013/06/sign-using-pyopenssl.html
+http://www.yothenberg.com/validate-x509-certificate-in-python/
+
+```
+#pip install pyopenssl
+from OpenSSL import crypto
+
+loaded_host_certificate = crypto.load_certificate(crypto.FILETYPE_PEM, open("/etc/ssl/certs/axle.wheel.prdv.de.cert.pem").read())
+
+print loaded_host_certificate.get_notBefore()
+#20160101000000Z
+
+print loaded_host_certificate.get_notAfter()
+#20180612204409Z
+```
+
+
+
+```
+from OpenSSL import crypto
+host_cert=open("/etc/ssl/certs/axle.wheel.prdv.de.cert.pem").read()
+loaded_host_certificate = crypto.load_certificate(crypto.FILETYPE_PEM, host_cert)
+store = crypto.X509Store()
+store.add_cert(crypto.load_certificate(crypto.FILETYPE_PEM, root_cert))
+store.add_cert(crypto.load_certificate(crypto.FILETYPE_PEM, intermediate_cert))
+
+store_context = crypto.X509StoreContext(store, loaded_host_certificate)
+retval = store_context.verify_certificate()
+print(retval)
+None
+```

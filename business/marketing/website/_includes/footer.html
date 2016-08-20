@@ -7,7 +7,7 @@
                   <ul>
                       <li class="nested-header"><h2><a href="#">project</a></h2>
                           <ul>
-                              <li><a href="/application/physical/installation">Installation</a></li>
+<!--                              <li><a href="/application/physical/installation">Installation</a></li>-->
                               <li><a href="https://github.com/helotism/helotism">Repository</a></li>
                               <li><a href="{{ "/business/marketing/website/feed.xml" | prepend: site.baseurl }}">RSS feed of this site</a></li>
                               <li><a href="{{ "/impressum.html" | prepend: site.baseurl }}">Impressum (de)</a></li>
@@ -17,7 +17,7 @@
                       <li class="nested-header biz"><h2><a href="#">biz</a></h2>
                           <ul>
                               <li><a href="#">big picture</a></li>
-                              <li><a href="#">structure</a></li>
+                              <li><a href="#">roadmap</a></li>
                               <li><a href="#">building blocks</a></li>
                           </ul>
                       </li>
@@ -27,17 +27,17 @@
                               <li><a href="#">building blocks</a></li>
                           </ul>
                       </li>
-                      <li class="nested-header app"><h2><a href="#">app</a></h2>
+                      <li class="nested-header app"><h2><a href="{{ "/application/" | prepend: site.baseurl }}">app</a></h2>
                           <ul>
-                              <li><a href="#">logical</a></li>
-                              <li><a href="#">physical</a></li>
+                              <li><a href="{{ "/application/logical/" | prepend: site.baseurl }}">logical</a></li>
+                              <li><a href="{{ "/application/physical/" | prepend: site.baseurl }}">physical</a></li>
                               <li><a href="{{ "/application/physical/building-blocks" | prepend: site.baseurl }}">building blocks</a></li>
                           </ul>
                       </li>
-                      <li class="nested-header tec"><h2><a href="#">tec</a></h2>
+                      <li class="nested-header tec"><h2><a href="{{ "/technology" | prepend: site.baseurl }}">tec</a></h2>
                           <ul>
-                              <li><a href="#">logical</a></li>
-                              <li><a href="#">physical</a></li>
+                              <li><a href="{{ "/technology/logical" | prepend: site.baseurl }}">logical</a></li>
+                              <li><a href="{{ "/technology/physical" | prepend: site.baseurl }}">physical</a></li>
                               <li><a href="{{ "/technology/physical/building-blocks" | prepend: site.baseurl }}">building blocks</a></li>
                           </ul>
                       </li>

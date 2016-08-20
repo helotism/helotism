@@ -168,9 +168,12 @@ TCP window size: 43.8 KByte (default)
 [  3]  0.0-10.0 sec   214 MBytes   179 Mbits/sec
 ```
 
-The **179 Mbits/sec** are about twice the speed. Of course this does not perform magic and if there is a noce connected with such an adapter to the switch and another node functioning as the gateway with only the 100MBit-ethernet to said switch while with another USB ethernet adapter to the outside network: Then the bottleneck will remain at 100 MBit/sec no matter what.
+The **179 Mbits/sec** are about twice the speed. Of course this does not perform magic.
+If in the following visualization the nodes "spoke01" and "spoke02" are connected to "axle" via a switch, with "axle" connected to the switch through the standard ethernet port, then there is no way "spoke01" and "spoke01" will get more than roughly 50 MBit/sec throughput to the uplink router.
 
-But all these performance measurements are not the full picture as a second network adapter offers many more capabilities.
+![Visualization of possible speed test scanarios]({{ "/technology/physical/building-blocks/images/usb-ethernet-adapter.png" | prepend: site.baseurl }})
+
+But all these performance measurements are not the full picture as a second network adapter offers many more capabilities than just its speed.
 
 In this text the wording "USB Gigabit Ethernet Adapter" was carefully avoided as the USB 2.0 ports will not provide anthing near such speeds for the adapter.
 
@@ -218,7 +221,7 @@ The DEVPATH and ID_PATH variables give the physical location which can be used l
 
 Repeating this udevadm call with USB ethernet adapters on several USB ports reveals this layout:
 
-![The installation workflow]({{ "/technology/physical/raspberry-pi/rpi-3-b_udev_ID_PATH.svg" | prepend: site.baseurl }})
+![The installation workflow]({{ "/technology/physical/raspberry-pi/rpi-3-b_udev_ID_PATH.png" | prepend: site.baseurl }})
 
 Here is the DEVPATH on the lower left USB port:
 
@@ -253,11 +256,11 @@ This files contains the two sections **[Match]** and **[Link]** and it is the [M
 >Path=
 >A whitespace-separated list of shell-style **globs** matching the persistent path, as exposed by the udev property "ID_PATH".
 
-Globbing means more than just the widcard with asterisks, but also character lists in square brackets, [amongst other things](http://www.tldp.org/LDP/abs/html/globbingref.html).
+Globbing means more than just the wildcard with asterisks, but also character lists in square brackets, [amongst other things](http://www.tldp.org/LDP/abs/html/globbingref.html).
 
 So a `Path=platform-3f980000.usb-usb-0:1.[245]:1.0` does match the three ports besides the lower left one.
 
-Which makes it trivially easy to not just rename the device (a HUGE discussion when systemd first hit the distros) but als set the maximum MTU or configure WOL wake on lan.
+Which makes it trivially easy to not just rename the device (a HUGE discussion when systemd first hit the distros) but also set the maximum MTU or configure WOL wake on lan.
 
 Even a random MAC address can easily be achieved, something can might come handy when testing an initial setup and forcing a DHCP server to hand out a new IP address every time:
 
@@ -306,7 +309,7 @@ A lightweight DHCP server is available, although not used in the Helotism projec
 
 One of the basic requirements of the Helotism project is to provide several network-related capabilities:
 
-![The installation workflow]({{ "/business/marketing/images/helotism-scope.svg" | prepend: site.baseurl }})
+![The installation workflow]({{ "/business/marketing/images/helotism-scope.png" | prepend: site.baseurl }})
 
 The **router** capability is very easily achieved with this setting in one of the `.network` files:
 
@@ -379,7 +382,7 @@ Without any renaming done on udev level the preditive device name is:
 
 ```
 # ls /sys/class/net/
-**enxa0cec81ebdda**  lan0  lo
+enxa0cec81ebdda  lan0  lo
 ```
 
 The bad news is: This name `enxa0cec81ebdda` is the same for all four USB ports! So for any etwork devices of importance it may be better to standardize the name with a `.link` configuration file.
@@ -387,6 +390,7 @@ The bad news is: This name `enxa0cec81ebdda` is the same for all four USB ports!
 But as a minimal example for a second network device on a Raspberry Pi the following configuration gives full control over a second IP address:
 
 ```
+# cat /etc/systemd/network/minimal-sample-a.network 
 [Match]
 Name=en*
 
@@ -397,6 +401,7 @@ DHCP=ipv4
 Or for a static address:
 
 ```
+# cat /etc/systemd/network/minimal-sample-b.network 
 [Match]
 Name=en*
 
