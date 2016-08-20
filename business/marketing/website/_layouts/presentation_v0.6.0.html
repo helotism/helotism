@@ -91,7 +91,7 @@
 					{ src: '{{ "/business/marketing/presentation/reveal.js-3.2.0/plugin/highlight/highlight.js" | prepend: site.baseurl }}', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 					{ src: '{{ "/business/marketing/presentation/reveal.js-3.2.0/plugin/zoom-js/zoom.js" | prepend: site.baseurl }}', async: true },
 					{ src: '{{ "/business/marketing/presentation/reveal.js-3.2.0/plugin/notes/notes.js" | prepend: site.baseurl }}', async: true },
-					{ src: '{{ "/business/marketing/presentation/reveal.js-3.2.0/plugin/title-footer/title-footer.js" | prepend: site.baseurl }}', async: true, callback: function() { title_footer.initialize('http://www.helotism.de/business/marketing/presentation/'); } },
+		{ src: '{{ "/business/marketing/presentation/reveal.js-3.2.0/plugin/title-footer/title-footer.js" | prepend: site.baseurl }}', async: true, callback: function() { title_footer.initialize(''); } },
           { src: '{{ "/business/marketing/presentation/reveal.js-3.2.0/plugin/gallery/gallery.plugin.js" | prepend: site.baseurl }}', async: true, condition: function() { return !!document.querySelector('.gallery'); } },
           { src: '{{ "/business/marketing/presentation/reveal.js-3.2.0/plugin/tagcloud/tagcloud.js" | prepend: site.baseurl }}', async: true },
 				]
