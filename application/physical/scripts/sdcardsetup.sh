@@ -169,7 +169,7 @@ if [ ! -f ./data/incoming/archlinuxarm/ArchLinuxARM-${_PLATFORM}-latest.tar.gz ]
   done
 else
   echo "File ArchLinuxARM-${_PLATFORM}-latest.tar.gz existing, checking for updates."
-  if [[ "$(curl --limit-rate 1000k http://archlinuxarm.org/os/ArchLinuxARM-${_PLATFORM}-latest.tar.gz -z data/incoming/archlinuxarm/ArchLinuxARM-${_PLATFORM}-latest.tar.gz -o data/incoming/archlinuxarm/ArchLinuxARM-${_PLATFORM}-latest.tar.gz --silent --location --write-out %{http_code};)" == "200" ]]; then
+  if [[ "$_SUDO $(curl --limit-rate 1000k http://archlinuxarm.org/os/ArchLinuxARM-${_PLATFORM}-latest.tar.gz -z data/incoming/archlinuxarm/ArchLinuxARM-${_PLATFORM}-latest.tar.gz -o data/incoming/archlinuxarm/ArchLinuxARM-${_PLATFORM}-latest.tar.gz --silent --location --write-out %{http_code};)" == "200" ]]; then
     echo "The file data/incoming/archlinuxarm/ArchLinuxARM-${_PLATFORM}-latest.tar.gz was updated.";
   else
     echo "The file data/incoming/archlinuxarm/ArchLinuxARM-${_PLATFORM}-latest.tar.gz was already up-to-date."
@@ -365,7 +365,7 @@ fi
 if [ "$__HOSTNAME" = "$__MASTERHOSTNAME" ]; then
 
   for d in etc/salt/minion.d etc/salt/master.d srv/salt srv/pillar srv/pillar/users srv/pillar/network; do
-    if [ ! -d ./tmp/root/${d} ]; then mkdir -p ./tmp/root/${d}; fi
+    if [ ! -d ./tmp/root/${d} ]; then $_SUDO mkdir -p ./tmp/root/${d}; fi
     if [ ! -d ./application/physical/saltstack/${d} ]; then mkdir -p ./application/physical/saltstack/${d}; fi
   done
 
@@ -584,7 +584,7 @@ EOF
      $_SUDO cp ./application/physical/saltstack/srv/salt/top.sls ./tmp/root/srv/salt/top.sls
   fi
 
-  if [ -f ./tmp/srv_pillar_helotism.sls ]; then cp ./tmp/srv_pillar_helotism.sls ./tmp/root/srv/pillar/helotism.sls ; fi
+  if [ -f ./tmp/srv_pillar_helotism.sls ]; then $_SUDO cp ./tmp/srv_pillar_helotism.sls ./tmp/root/srv/pillar/helotism.sls ; fi
 
 if [ ! -f ./application/physical/systemd/etc/systemd/network/20_rpi-3-b_ethernetport.router.network ]; then #not in a cloned/forked repo
   sed 's/^[ ]*<trim \/>//' <<EOF | $_SUDO tee ./tmp/root/etc/systemd/network/20_rpi-3-b_ethernetport.router.network > /dev/null
