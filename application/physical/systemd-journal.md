@@ -34,18 +34,21 @@ cryptographic seal to detect tampering
 https://github.com/systemd/systemd/blob/master/src/journal-remote/journal-upload.c#L435
 if (!(host = startswith(url, "http://")) && !(host = startswith(url, "https://"))) {
 
+```
 #define PRIV_KEY_FILE CERTIFICATE_ROOT "/private/journal-upload.pem"
 #define CERT_FILE     CERTIFICATE_ROOT "/certs/journal-upload.pem"
 #define TRUST_FILE    CERTIFICATE_ROOT "/ca/trusted.pem"
 #define DEFAULT_PORT  19532
 
 #define STATE_FILE "/var/lib/systemd/journal-upload/state"
+```
 
 There must be the path existing and the permissions set!
+```
 return log_error_errno(r, "Cannot create parent directory of state file %s: %m",
 
 return log_error_errno(r, "Cannot save state to %s: %m",
-
+```
 
 
 
