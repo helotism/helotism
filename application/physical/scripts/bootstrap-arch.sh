@@ -155,7 +155,7 @@ do_prompt_configuration() {
     echo "Only https:// links are allowed as otherwise SSH keys are involved."
     echo "This is technically possible but out of scope of this script."
     read -e -p "What Git repository do you want to reference? " -i "${__GITREMOTEORIGINURL}" __GITREMOTEORIGINURL
-    if [[ "$__GITREMOTEORIGINURL" =~ ^https://([a-zA-Z]{1}([a-zA-Z\-]+))\.([a-zA-Z]{2,6})/([a-zA-Z/]*).git$ ]]; then
+    if [[ "$__GITREMOTEORIGINURL" =~ ^https://([a-zA-Z]{1}([a-zA-Z\-]+))\.([a-zA-Z]{2,6})/([a-zA-Z/-]*).git$ ]]; then
        break;
     else
       echo "${__GITREMOTEORIGINURL} is not valid, should be the https version and ending with .git"
