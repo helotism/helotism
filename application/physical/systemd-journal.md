@@ -51,6 +51,4 @@ return log_error_errno(r, "Cannot save state to %s: %m",
 ```
 
 
-
 https://github.com/systemd/systemd/blob/master/src/journal-remote/browse.html
-

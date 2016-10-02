@@ -43,6 +43,18 @@ enable the systemd service for the receiving journal-remote:
     - watch:
       - file: /etc/systemd/journal-remote.conf 
 
+The permissions must be correct for the remote journal mountpoint:
+  file.directory:
+    - name: /var/log/journal/remote
+    - user: systemd-journal-remote
+    - group: systemd-journal-remote
+    - file_mode: 664
+    - dir_mode: 2775
+    - recurse:
+      - user
+      - group
+      - mode
+
 {% else %}
 nothing to configure here:
   file.absent:

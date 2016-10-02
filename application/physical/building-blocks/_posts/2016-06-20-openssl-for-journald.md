@@ -1,9 +1,8 @@
 ---
 layout: post
 title:  "OpenSSL With Reference to Remote Logging Via Systemd"
-date:   2099-06-20 10:00:00 +0100
+date:   2016-06-20 10:00:00 +0100
 categories: [ application-physical_building-blocks ]
----
 
 
 Recommended Reading
@@ -33,6 +32,7 @@ https://fedoraproject.org/wiki/Changes/Remote_Journal_Logging
 
 https://docs.google.com/document/pub?id=1IC9yOXj7j6cdLLxWEBAGRL6wl97tFxgjLUEHIX3MSTs
 https://www.loggly.com/blog/why-journald/
+
 
 
 openssl req -subj '/C=DE/ST=Hessen/L=Rittershausen/O=PRDV/OU=IT/CN=localhost' -x509 -nodes -days 365 -sha256   -newkey rsa:2048 -keyout mycert.key -out mycert.crt
@@ -297,7 +297,6 @@ print loaded_host_certificate.get_notBefore()
 print loaded_host_certificate.get_notAfter()
 #20180612204409Z
 ```
-
 
 
 ```
