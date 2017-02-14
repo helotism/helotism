@@ -257,7 +257,7 @@ fi
 if [ ! -d ./tmp/root/etc/systemd/network ]; then mkdir -p ./tmp/root/etc/systemd/network ; fi
 
 #the network for an USB ethernet adapter
-if [ ! -f ./application/physical/systemd/etc/systemd/network/70_rpi-3-b_usbports.link ]; then #not in a cloned/forked repo
+if [ ! -f ./application/physical/systemd/assets/etc/systemd/network/70_rpi-3-b_usbports.link ]; then #not in a cloned/forked repo
   sed 's/^[ ]*<trim \/>//' <<EOF | $_SUDO tee ./tmp/root/etc/systemd/network/70_rpi-3-b_usbports.link > /dev/null
     <trim />[Match]
     <trim />Path=platform-3f980000.usb-usb-0:1.[2345]:1.0
@@ -267,12 +267,12 @@ if [ ! -f ./application/physical/systemd/etc/systemd/network/70_rpi-3-b_usbports
     <trim />#NamePolicy=mac
     <trim />Name=usbwan0
 EOF
-  $_SUDO cp ./tmp/root/etc/systemd/network/70_rpi-3-b_usbports.link ./application/physical/systemd/etc/systemd/network/70_rpi-3-b_usbports.link
+  $_SUDO cp ./tmp/root/etc/systemd/network/70_rpi-3-b_usbports.link ./application/physical/systemd/assets/etc/systemd/network/70_rpi-3-b_usbports.link
 else
-  $_SUDO cp ./application/physical/systemd/etc/systemd/network/70_rpi-3-b_usbports.link ./tmp/root/etc/systemd/network/70_rpi-3-b_usbports.link
+  $_SUDO cp ./application/physical/systemd/assets/etc/systemd/network/70_rpi-3-b_usbports.link ./tmp/root/etc/systemd/network/70_rpi-3-b_usbports.link
 fi
 
-if [ ! -f ./application/physical/systemd/etc/systemd/network/70_rpi-3-b_usbports.network ]; then #not in a cloned/forked repo
+if [ ! -f ./application/physical/systemd/assets/etc/systemd/network/70_rpi-3-b_usbports.network ]; then #not in a cloned/forked repo
 sed 's/^[ ]*<trim \/>//' <<EOF | $_SUDO tee ./tmp/root/etc/systemd/network/70_rpi-3-b_usbports.network > /dev/null
   <trim />[Match]
   <trim />Name=usbwan0
@@ -291,13 +291,13 @@ sed 's/^[ ]*<trim \/>//' <<EOF | $_SUDO tee ./tmp/root/etc/systemd/network/70_rp
   <trim />#Label=usbwan0:1
   <trim />#Address=aaa.bbb.ccc.ddd
 EOF
-  $_SUDO cp ./tmp/root/etc/systemd/network/70_rpi-3-b_usbports.network ./application/physical/systemd/etc/systemd/network/70_rpi-3-b_usbports.network
+  $_SUDO cp ./tmp/root/etc/systemd/network/70_rpi-3-b_usbports.network ./application/physical/systemd/assets/etc/systemd/network/70_rpi-3-b_usbports.network
 else
-  $_SUDO cp ./application/physical/systemd/etc/systemd/network/70_rpi-3-b_usbports.network ./tmp/root/etc/systemd/network/70_rpi-3-b_usbports.network
+  $_SUDO cp ./application/physical/systemd/assets/etc/systemd/network/70_rpi-3-b_usbports.network ./tmp/root/etc/systemd/network/70_rpi-3-b_usbports.network
 fi
 
 #the network for an EDIMAX WiFi dongle
-if [ ! -f ./application/physical/systemd/etc/systemd/network/50_rpi-3-b_usbports-edimax.link ]; then #not in a cloned/forked repo
+if [ ! -f ./application/physical/systemd/assets/etc/systemd/network/50_rpi-3-b_usbports-edimax.link ]; then #not in a cloned/forked repo
   sed 's/^[ ]*<trim \/>//' <<EOF | $_SUDO tee ./tmp/root/etc/systemd/network/50_rpi-3-b_usbports-edimax.link > /dev/null
     <trim />[Match]
     <trim />Path=platform-3f980000.usb-usb-0:1.[2345]:1.0
@@ -306,12 +306,12 @@ if [ ! -f ./application/physical/systemd/etc/systemd/network/50_rpi-3-b_usbports
     <trim />[Link]
     <trim />Name=wifiwan0
 EOF
-  $_SUDO cp ./tmp/root/etc/systemd/network/50_rpi-3-b_usbports-edimax.link ./application/physical/systemd/etc/systemd/network/50_rpi-3-b_usbports-edimax.link
+  $_SUDO cp ./tmp/root/etc/systemd/network/50_rpi-3-b_usbports-edimax.link ./application/physical/systemd/assets/etc/systemd/network/50_rpi-3-b_usbports-edimax.link
 else
-  $_SUDO cp ./application/physical/systemd/etc/systemd/network/50_rpi-3-b_usbports-edimax.link ./tmp/root/etc/systemd/network/50_rpi-3-b_usbports-edimax.link
+  $_SUDO cp ./application/physical/systemd/assets/etc/systemd/network/50_rpi-3-b_usbports-edimax.link ./tmp/root/etc/systemd/network/50_rpi-3-b_usbports-edimax.link
 fi
 
-if [ ! -f ./application/physical/systemd/etc/systemd/network/50_rpi-3-b_usbports-edimax.network ]; then #not in a cloned/forked repo
+if [ ! -f ./application/physical/systemd/assets/etc/systemd/network/50_rpi-3-b_usbports-edimax.network ]; then #not in a cloned/forked repo
 sed 's/^[ ]*<trim \/>//' <<EOF | $_SUDO tee ./tmp/root/etc/systemd/network/50_rpi-3-b_usbports-edimax.network > /dev/null
   <trim />[Match]
   <trim />Name=wifiwan0
@@ -321,13 +321,13 @@ sed 's/^[ ]*<trim \/>//' <<EOF | $_SUDO tee ./tmp/root/etc/systemd/network/50_rp
   <trim />DHCP=ipv4
   <trim />IPv6AcceptRouterAdvertisements=0
 EOF
-  $_SUDO cp ./tmp/root/etc/systemd/network/50_rpi-3-b_usbports-edimax.network ./application/physical/systemd/etc/systemd/network/70_rpi-3-b_usbports-edimax.network
+  $_SUDO cp ./tmp/root/etc/systemd/network/50_rpi-3-b_usbports-edimax.network ./application/physical/systemd/assets/etc/systemd/network/70_rpi-3-b_usbports-edimax.network
 else
-  $_SUDO cp ./application/physical/systemd/etc/systemd/network/70_rpi-3-b_usbports-edimax.network ./tmp/root/etc/systemd/network/70_rpi-3-b_usbports-edimax.network
+  $_SUDO cp ./application/physical/systemd/assets/etc/systemd/network/70_rpi-3-b_usbports-edimax.network ./tmp/root/etc/systemd/network/70_rpi-3-b_usbports-edimax.network
 fi
 
 #the network on the ethernet port
-if [ ! -f ./application/physical/systemd/etc/systemd/network/20_rpi-3-b_ethernetport.link ]; then #not in a cloned/forked repo
+if [ ! -f ./application/physical/systemd/assets/etc/systemd/network/20_rpi-3-b_ethernetport.link ]; then #not in a cloned/forked repo
   sed 's/^[ ]*<trim \/>//' <<EOF | $_SUDO tee ./tmp/root/etc/systemd/network/20_rpi-3-b_ethernetport.link > /dev/null
     <trim />[Match]
     <trim />Path=platform-3f980000.usb-usb-0:1.1:1.0
@@ -335,9 +335,9 @@ if [ ! -f ./application/physical/systemd/etc/systemd/network/20_rpi-3-b_ethernet
     <trim />[Link]
     <trim />Name=lan0
 EOF
-  $_SUDO cp ./tmp/root/etc/systemd/network/20_rpi-3-b_ethernetport.link ./application/physical/systemd/etc/systemd/network/20_rpi-3-b_ethernetport.link
+  $_SUDO cp ./tmp/root/etc/systemd/network/20_rpi-3-b_ethernetport.link ./application/physical/systemd/assets/etc/systemd/network/20_rpi-3-b_ethernetport.link
 else
-  $_SUDO cp ./application/physical/systemd/etc/systemd/network/20_rpi-3-b_ethernetport.link ./tmp/root/etc/systemd/network/20_rpi-3-b_ethernetport.link
+  $_SUDO cp ./application/physical/systemd/assets/etc/systemd/network/20_rpi-3-b_ethernetport.link ./tmp/root/etc/systemd/network/20_rpi-3-b_ethernetport.link
 fi
 
 #better only set this if the parameter was supplied
@@ -366,7 +366,7 @@ if [ "$__HOSTNAME" = "$__MASTERHOSTNAME" ]; then
 
   for d in etc/salt/minion.d etc/salt/master.d srv/salt srv/pillar srv/pillar/users srv/pillar/network; do
     if [ ! -d ./tmp/root/${d} ]; then $_SUDO mkdir -p ./tmp/root/${d}; fi
-    if [ ! -d ./application/physical/saltstack/${d} ]; then mkdir -p ./application/physical/saltstack/${d}; fi
+    if [ ! -d ./application/physical/saltstack/assets/${d} ]; then mkdir -p ./application/physical/saltstack/assets/${d}; fi
   done
 
   #TODO: Change sudoers logic to only grant ALL rights when an individual password is supplied
@@ -382,57 +382,57 @@ if [ "$__HOSTNAME" = "$__MASTERHOSTNAME" ]; then
 EOF
 
   #master saltstack salt-master ext_pillar
-  if [ ! -f ./application/physical/saltstack/etc/salt/master.d/90_ext_pillar.conf ]; then
+  if [ ! -f ./application/physical/saltstack/assets/etc/salt/master.d/90_ext_pillar.conf ]; then
     if [ ! -z ${__GITREMOTEORIGINURL} ]; then #repeated for clarity/safety/...
       sed 's/^[ ]*<trim \/>//' <<EOF | $_SUDO tee ./tmp/root/etc/salt/master.d/90_ext_pillar.conf > /dev/null
         <trim />ext_pillar:
         <trim />  - git:
         <trim />    - ${__GITREMOTEORIGINBRANCH} ${__GITREMOTEORIGINURL}:
-        <trim />      - root: application/physical/saltstack/srv/pillar
+        <trim />      - root: application/physical/saltstack/assets/srv/pillar
 EOF
-      $_SUDO cp ./tmp/root/etc/salt/master.d/90_ext_pillar.conf ./application/physical/saltstack/etc/salt/master.d/90_ext_pillar.conf
+      $_SUDO cp ./tmp/root/etc/salt/master.d/90_ext_pillar.conf ./application/physical/saltstack/assets/etc/salt/master.d/90_ext_pillar.conf
     fi
   else
-    $_SUDO cp ./application/physical/saltstack/etc/salt/master.d/90_ext_pillar.conf ./tmp/root/etc/salt/master.d/90_ext_pillar.conf
+    $_SUDO cp ./application/physical/saltstack/assets/etc/salt/master.d/90_ext_pillar.conf ./tmp/root/etc/salt/master.d/90_ext_pillar.conf
   fi
 
   #master saltstack salt-master gitfs_remotes
-  if [ ! -f ./application/physical/saltstack/etc/salt/master.d/90_gitfs_remotes.conf ]; then
+  if [ ! -f ./application/physical/saltstack/assets/etc/salt/master.d/90_gitfs_remotes.conf ]; then
     if [ ! -z ${__GITREMOTEORIGINURL} ]; then #repeated for clarity/safety/...
       sed 's/^[ ]*<trim \/>//' <<EOF | $_SUDO tee ./tmp/root/etc/salt/master.d/90_gitfs_remotes.conf > /dev/null
         <trim />gitfs_remotes:
         <trim />  - ${__GITREMOTEORIGINURL}:
-        <trim />    - root: application/physical/saltstack/srv/salt
+        <trim />    - root: application/physical/saltstack/assets/srv/salt
         <trim />    - base: ${__GITREMOTEORIGINBRANCH}
         <trim />  - ${__GITREMOTEORIGINURL}:
         <trim />    - name: dnsmasq_formula
-        <trim />    - root: application/physical/vendor/saltstack-formulas/dnsmasq_formula
+        <trim />    - root: application/physical/saltstack/vendor/saltstack-formulas/dnsmasq_formula
         <trim />    - base: ${__GITREMOTEORIGINBRANCH}
         <trim />  - ${__GITREMOTEORIGINURL}:
         <trim />    - name: ntp_formula
-        <trim />    - root: application/physical/vendor/saltstack-formulas/ntp_formula
+        <trim />    - root: application/physical/saltstack/vendor/saltstack-formulas/ntp_formula
         <trim />    - base: ${__GITREMOTEORIGINBRANCH}
         <trim />  - ${__GITREMOTEORIGINURL}:
         <trim />    - name: users_formula
-        <trim />    - root: application/physical/vendor/saltstack-formulas/users_formula
+        <trim />    - root: application/physical/saltstack/vendor/saltstack-formulas/users_formula
         <trim />    - base: ${__GITREMOTEORIGINBRANCH}
 EOF
-    $_SUDO cp ./tmp/root/etc/salt/master.d/90_gitfs_remotes.conf ./application/physical/saltstack/etc/salt/master.d/90_gitfs_remotes.conf
+    $_SUDO cp ./tmp/root/etc/salt/master.d/90_gitfs_remotes.conf ./application/physical/saltstack/assets/etc/salt/master.d/90_gitfs_remotes.conf
     fi
   else
-    $_SUDO cp ./application/physical/saltstack/etc/salt/master.d/90_gitfs_remotes.conf ./tmp/root/etc/salt/master.d/90_gitfs_remotes.conf
+    $_SUDO cp ./application/physical/saltstack/assets/etc/salt/master.d/90_gitfs_remotes.conf ./tmp/root/etc/salt/master.d/90_gitfs_remotes.conf
   fi
 
   #master saltstack salt-master fileserver_backends
-  if [ ! -f ./application/physical/saltstack/etc/salt/master.d/90_fileserver_backend.conf ]; then
+  if [ ! -f ./application/physical/saltstack/assets/etc/salt/master.d/90_fileserver_backend.conf ]; then
     sed 's/^[ ]*<trim \/>//' <<EOF | $_SUDO tee ./tmp/root/etc/salt/master.d/90_fileserver_backend.conf > /dev/null
       <trim />fileserver_backend:
       <trim />  - roots
       <trim />  - git
 EOF
-    $_SUDO cp ./tmp/root/etc/salt/master.d/90_fileserver_backend.conf ./application/physical/saltstack/etc/salt/master.d/90_fileserver_backend.conf
+    $_SUDO cp ./tmp/root/etc/salt/master.d/90_fileserver_backend.conf ./application/physical/saltstack/assets/etc/salt/master.d/90_fileserver_backend.conf
   else
-    $_SUDO cp ./application/physical/saltstack/etc/salt/master.d/90_fileserver_backend.conf ./tmp/root/etc/salt/master.d/90_fileserver_backend.conf
+    $_SUDO cp ./application/physical/saltstack/assets/etc/salt/master.d/90_fileserver_backend.conf ./tmp/root/etc/salt/master.d/90_fileserver_backend.conf
   fi
 
   #master saltstack minions grains
@@ -467,32 +467,32 @@ EOF
 
   #master saltstack salt ntp-server
   #nodes get the NTP server via DHCP option
-  if [ ! -f ./application/physical/saltstack/srv/salt/ntp-server.sls ]; then
+  if [ ! -f ./application/physical/saltstack/assets/srv/salt/ntp-server.sls ]; then
     sed 's/^[ ]*<trim \/>//' <<EOF | $_SUDO tee ./tmp/root/srv/salt/ntp-server.sls > /dev/null
       <trim />include:
       <trim />  - ntp/ng
 EOF
-    $_SUDO cp ./tmp/root/srv/salt/ntp-server.sls ./application/physical/saltstack/srv/salt/ntp-server.sls
+    $_SUDO cp ./tmp/root/srv/salt/ntp-server.sls ./application/physical/saltstack/assets/srv/salt/ntp-server.sls
   else
-    $_SUDO cp ./application/physical/saltstack/srv/salt/ntp-server.sls ./tmp/root/srv/salt/ntp-server.sls
+    $_SUDO cp ./application/physical/saltstack/assets/srv/salt/ntp-server.sls ./tmp/root/srv/salt/ntp-server.sls
   fi
 
-  if [ ! -f ./application/physical/systemd/etc/systemd/timesyncd.conf ]; then #not in a cloned/forked repo
+  if [ ! -f ./application/physical/systemd/assets/etc/systemd/timesyncd.conf ]; then #not in a cloned/forked repo
     sed 's/^[ ]*<trim \/>//' <<EOF | $_SUDO tee ./tmp/root/etc/systemd/timesyncd.conf > /dev/null
       <trim />[Time]
       <trim />NTP=${__MASTERIP}
       <trim />FallbackNTP=0.arch.pool.ntp.org 1.arch.pool.ntp.org 2.arch.pool.ntp.org 3.arch.pool.ntp.org
 EOF
-    $_SUDO cp ./tmp/root/etc/systemd/timesyncd.conf ./application/physical/systemd/etc/systemd/timesyncd.conf
+    $_SUDO cp ./tmp/root/etc/systemd/timesyncd.conf ./application/physical/systemd/assets/etc/systemd/timesyncd.conf
   else
-    $_SUDO cp ./application/physical/systemd/etc/systemd/timesyncd.conf ./tmp/root/etc/systemd/timesyncd.conf
+    $_SUDO cp ./application/physical/systemd/assets/etc/systemd/timesyncd.conf ./tmp/root/etc/systemd/timesyncd.conf
   fi
 
 
   #master saltstack pillar ntp-server
   #TODO: Test reliance on helotism file
   #FIXME: Breaks on nonexisting file /srv/pillar/helotism.sls
-  if [ ! -f ./application/physical/saltstack/srv/pillar/ntp-server.sls ]; then
+  if [ ! -f ./application/physical/saltstack/assets/srv/pillar/ntp-server.sls ]; then
     sed 's/^[ ]*<trim \/>//' <<EOF | $_SUDO tee ./tmp/root/srv/pillar/ntp-server.sls > /dev/null
       <trim />{% from 'helotism.sls' import vars %}
       <trim />ntp:
@@ -510,14 +510,14 @@ EOF
       <trim />        restrict: ['default nomodify nopeer noquery', '127.0.0.1', '::1', '${__NETWORKPREFIX} mask ${__NETWORKSEGMENT} nomodify  nopeer notrap']
       <trim />{% endif %}
 EOF
-    $_SUDO cp ./tmp/root/srv/pillar/ntp-server.sls ./application/physical/saltstack/srv/pillar/ntp-server.sls
+    $_SUDO cp ./tmp/root/srv/pillar/ntp-server.sls ./application/physical/saltstack/assets/srv/pillar/ntp-server.sls
   else
-     $_SUDO cp ./application/physical/saltstack/srv/pillar/ntp-server.sls ./tmp/root/srv/pillar/ntp-server.sls
+     $_SUDO cp ./application/physical/saltstack/assets/srv/pillar/ntp-server.sls ./tmp/root/srv/pillar/ntp-server.sls
   fi
 
 
   #master saltstack pillar dhcp-server dns-server
-  if [ ! -f ./application/physical/saltstack/srv/pillar/dhcp-server.sls ]; then
+  if [ ! -f ./application/physical/saltstack/assets/srv/pillar/dhcp-server.sls ]; then
   sed 's/^[ ]*<trim \/>//' <<EOF | $_SUDO tee ./tmp/root/srv/pillar/dhcp-server.sls > /dev/null
     <trim />dnsmasq:
     <trim />  dnsmasq_conf: salt://dnsmasq/files/dnsmasq.conf
@@ -553,14 +553,14 @@ EOF
     <trim />    auth-zone:
     <trim />      - ${__FQDNNAME},${__NETWORKSEGMENTCIDR}
 EOF
-    $_SUDO cp ./tmp/root/srv/pillar/dhcp-server.sls ./application/physical/saltstack/srv/pillar/dhcp-server.sls
+    $_SUDO cp ./tmp/root/srv/pillar/dhcp-server.sls ./application/physical/saltstack/assets/srv/pillar/dhcp-server.sls
   else
-     $_SUDO cp ./application/physical/saltstack/srv/pillar/dhcp-server.sls ./tmp/root/srv/pillar/dhcp-server.sls
+     $_SUDO cp ./application/physical/saltstack/assets/srv/pillar/dhcp-server.sls ./tmp/root/srv/pillar/dhcp-server.sls
   fi
 
   #master saltstack salt
   #$_SUDO tee ./tmp/root/srv/salt/top.sls > /dev/null <<EOF
-  if [ ! -f ./application/physical/saltstack/srv/salt/top.sls ]; then
+  if [ ! -f ./application/physical/saltstack/assets/srv/salt/top.sls ]; then
     sed 's/^[ ]*<trim \/>//' <<EOF | $_SUDO tee ./tmp/root/srv/salt/top.sls > /dev/null
       <trim />base:
       <trim />  '*':
@@ -579,14 +579,14 @@ EOF
       <trim />    - match: grain
       <trim />    - power-button
 EOF
-    $_SUDO cp ./tmp/root/srv/salt/top.sls ./application/physical/saltstack/srv/salt/top.sls
+    $_SUDO cp ./tmp/root/srv/salt/top.sls ./application/physical/saltstack/assets/srv/salt/top.sls
   else
-     $_SUDO cp ./application/physical/saltstack/srv/salt/top.sls ./tmp/root/srv/salt/top.sls
+     $_SUDO cp ./application/physical/saltstack/assets/srv/salt/top.sls ./tmp/root/srv/salt/top.sls
   fi
 
   if [ -f ./tmp/srv_pillar_helotism.sls ]; then $_SUDO cp ./tmp/srv_pillar_helotism.sls ./tmp/root/srv/pillar/helotism.sls ; fi
 
-if [ ! -f ./application/physical/systemd/etc/systemd/network/20_rpi-3-b_ethernetport.router.network ]; then #not in a cloned/forked repo
+if [ ! -f ./application/physical/systemd/assets/etc/systemd/network/20_rpi-3-b_ethernetport.router.network ]; then #not in a cloned/forked repo
   sed 's/^[ ]*<trim \/>//' <<EOF | $_SUDO tee ./tmp/root/etc/systemd/network/20_rpi-3-b_ethernetport.router.network > /dev/null
       <trim />[Match]
       <trim />Name=lan0
@@ -597,13 +597,13 @@ if [ ! -f ./application/physical/systemd/etc/systemd/network/20_rpi-3-b_ethernet
       <trim />IPMasquerade=yes
       <trim />IPv6AcceptRouterAdvertisements=0
 EOF
-  $_SUDO cp ./tmp/root/etc/systemd/network/20_rpi-3-b_ethernetport.router.network ./application/physical/systemd/etc/systemd/network/20_rpi-3-b_ethernetport.router.network
+  $_SUDO cp ./tmp/root/etc/systemd/network/20_rpi-3-b_ethernetport.router.network ./application/physical/systemd/assets/etc/systemd/network/20_rpi-3-b_ethernetport.router.network
 else
-  $_SUDO cp ./application/physical/systemd/etc/systemd/network/20_rpi-3-b_ethernetport.router.network ./tmp/root/etc/systemd/network/20_rpi-3-b_ethernetport.router.network
+  $_SUDO cp ./application/physical/systemd/assets/etc/systemd/network/20_rpi-3-b_ethernetport.router.network ./tmp/root/etc/systemd/network/20_rpi-3-b_ethernetport.router.network
 fi
 
   #master systemd resolved
-if [ ! -f ./application/physical/systemd/etc/systemd/resolved.conf ]; then
+if [ ! -f ./application/physical/systemd/assets/etc/systemd/resolved.conf ]; then
   sed 's/^[ ]*<trim \/>//' <<EOF | $_SUDO tee ./tmp/root/etc/systemd/resolved.conf > /dev/null
     <trim />[Resolve]
     <trim />DNS=${__MASTERIP}
@@ -611,9 +611,9 @@ if [ ! -f ./application/physical/systemd/etc/systemd/resolved.conf ]; then
     <trim />#closes port 5355 for Link-local Multicast Name Resolution
     <trim />LLMNR=0
 EOF
-  $_SUDO cp ./tmp/root/etc/systemd/resolved.conf ./application/physical/systemd/etc/systemd/resolved.conf
+  $_SUDO cp ./tmp/root/etc/systemd/resolved.conf ./application/physical/systemd/assets/etc/systemd/resolved.conf
 else
-  $_SUDO cp ./application/physical/systemd/etc/systemd/resolved.conf ./tmp/root/etc/systemd/resolved.conf
+  $_SUDO cp ./application/physical/systemd/assets/etc/systemd/resolved.conf ./tmp/root/etc/systemd/resolved.conf
 fi
 
 ######################################################################
@@ -627,7 +627,7 @@ fi
 else #this is not the master
 
   #nodes systemd network
-  if [ ! -f ./application/physical/systemd/etc/systemd/network/20_rpi-3-b_ethernetport.nonrouter.network ]; then #not in a cloned/forked repo
+  if [ ! -f ./application/physical/systemd/assets/etc/systemd/network/20_rpi-3-b_ethernetport.nonrouter.network ]; then #not in a cloned/forked repo
   $_SUDO tee ./tmp/root/etc/systemd/network/20_rpi-3-b_ethernetport.nonrouter.network > /dev/null <<EOF
 [Match]
 Name=lan0
@@ -636,9 +636,9 @@ Name=lan0
 DHCP=ipv4
 IPv6AcceptRouterAdvertisements=0
 EOF
-    $_SUDO cp ./tmp/root/etc/systemd/network/20_rpi-3-b_ethernetport.nonrouter.network ./application/physical/systemd/etc/systemd/network/20_rpi-3-b_ethernetport.nonrouter.network
+    $_SUDO cp ./tmp/root/etc/systemd/network/20_rpi-3-b_ethernetport.nonrouter.network ./application/physical/systemd/assets/etc/systemd/network/20_rpi-3-b_ethernetport.nonrouter.network
   else
-    $_SUDO cp ./application/physical/systemd/etc/systemd/network/20_rpi-3-b_ethernetport.nonrouter.network ./tmp/root/etc/systemd/network/20_rpi-3-b_ethernetport.nonrouter.network
+    $_SUDO cp ./application/physical/systemd/assets/etc/systemd/network/20_rpi-3-b_ethernetport.nonrouter.network ./tmp/root/etc/systemd/network/20_rpi-3-b_ethernetport.nonrouter.network
   fi
 
 fi #end if else master=hostname
@@ -668,8 +668,8 @@ tmp=''
 if [ ! -z "$__MASTERHOSTNAME" ]; then tmp="-A ${__MASTERHOSTNAME} "; fi
 if [ "$__HOSTNAME" = "$__MASTERHOSTNAME" ]; then tmp="${tmp} -M"; fi
 _todolive="pacman -Syu --noconfirm";
-if [ "$__HOSTNAME" = "$__MASTERHOSTNAME" ]; then _todolive=" ${_todolive}; pacman -S --noconfirm python2-pygit2"; fi
-_todolive=" ${_todolive}; curl -o bootstrap_salt.sh -L https://bootstrap.saltstack.com --silent -k; sleep 2; $_SUDO sh bootstrap_salt.sh -U -i ${__HOSTNAME} ${tmp} git v2016.3.0";
+if [ "$__HOSTNAME" = "$__MASTERHOSTNAME" ]; then _todolive=" ${_todolive}; pacman -S --noconfirm python2-pygit2 python2-yaml"; fi
+_todolive=" ${_todolive}; curl -o bootstrap_salt.sh -L https://bootstrap.saltstack.com --silent -k; sleep 2; $_SUDO sh bootstrap_salt.sh -U -i ${__HOSTNAME} ${tmp} git v2016.11.2";
 if [ "$__HOSTNAME" = "$__MASTERHOSTNAME" ]; then _todolive=" ${_todolive}; sleep 60; salt-key -A -y; echo 'Sleeping 60 seconds to settle down salt.'; sleep 60; salt '${__MASTERHOSTNAME}' state.apply dnsmasq; salt '${__MASTERHOSTNAME}' state.apply ntp-server; salt '${__MASTERHOSTNAME}' state.apply common; salt '${__MASTERHOSTNAME}' state.apply power-button"; fi
 _todolive=" ${_todolive}; timedatectl set-ntp true;"
 
