@@ -6,7 +6,8 @@
 _PATH='/cygdrive/c/Users/christian.prior/Desktop/openssltests/script1'
 #_PATH=$(openssl version -d); if [ ! -d ${_PATH} ]; then echo "The path ${_PATH} does not exist! Exiting."; fi
 _PATH='/home/cpr/Desktop/openssltests'
-__PREFIX='helotism'          #p
+_PATH='/home/cpr/helotism/helotism/data/pki'
+__PREFIX='rack1.clt2017.helotism.de'      #p
 __makerootca="False"         #r
 __makeintermediateca="False" #i
 #http://stackoverflow.com/q/59895
@@ -165,7 +166,8 @@ fi # end if __makeintermediateca
 
 ### Sign server and client certificates
 
-for host in axle.wheel.prdv.de spoke0{1,2,3,4}.wheel.prdv.de cog0{1,2,3,4}.wheel.prdv.de; do
+#for host in axle.wheel.prdv.de spoke0{1,2,3,4}.wheel.prdv.de cog0{1,2,3,4}.wheel.prdv.de; do
+for host in axle.rack1.clt2017.helotism.de spoke0{1,2,3,4}.rack1.clt2017.helotism.de cog0{1,2,3,4}.rack1.clt2017.helotism.de; do
 
   clear
 
