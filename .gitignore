@@ -4,5 +4,16 @@ business/marketing/website/_site
 Gemfile.lock
 data/incoming/**/*tar.gz
 data/pki
+data/disks
 data/screencapture_*.mkv
 tmp/*
+application/physical/systemd/assets/etc/systemd/network/*link
+application/physical/systemd/assets/etc/systemd/network/*network
+application/physical/saltstack/assets/etc/salt/master.d/90_ext_pillar.conf
+application/physical/saltstack/assets/etc/salt/master.d/90_fileserver_backend.conf
+application/physical/saltstack/assets/etc/salt/master.d/90_gitfs_remotes.conf
+application/physical/saltstack/assets/srv/pillar/dhcp-server.sls
+application/physical/saltstack/assets/srv/pillar/ntp-server.sls
+application/physical/systemd/assets/etc/systemd/resolved.conf
+application/physical/systemd/assets/etc/systemd/timesyncd.conf
+
