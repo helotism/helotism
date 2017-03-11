@@ -10,7 +10,7 @@ layout: default
 {% endunless %}
 
 
-{% for post in site.categories.[page.type] %}
+{% for post in site.categories[page.type] %}
   <h2><a href="{{ post.url | prepend: site.baseurl }}"">{{ post.title }}</a></h2>
   <p>{{ post.abstract }} </p>
 {% endfor %}
