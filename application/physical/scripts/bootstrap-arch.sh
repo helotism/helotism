@@ -289,7 +289,8 @@ while true; do
               if [ ${1:0:4} = "NAME" ]; then
                 eval "$1"; if [ ! -z $NAME ]; then __after+=($NAME); fi
               fi;
-              done < <(lsblk -d -o "NAME,HOTPLUG,ROTA,TYPE" --paths --pairs --ascii | grep 'HOTPLUG="1"' | grep 'ROTA="0');
+              #lsblk -d -o "NAME,HOTPLUG,ROTA,TYPE" --paths --pairs --ascii | grep 'HOTPLUG="1"' | grep 'ROTA="0'
+              done < <(lsblk -d -o "NAME,HOTPLUG,ROTA,TYPE" --paths --pairs --ascii | grep 'HOTPLUG="1"' );
               break;;
     [Nn]* ) echo "Please remove the SD card.";;
     * ) echo "Please answer yes or no";;
