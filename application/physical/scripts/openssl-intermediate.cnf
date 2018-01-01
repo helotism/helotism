@@ -7,7 +7,7 @@ default_ca = CA_default
 
 [ CA_default ]
 # Directory and file locations.
-dir               = /cygdrive/c/Users/christian.prior/Desktop/openssltests/script1/helotism-intermediate-ca
+dir               = .
 certs             = $dir/public-certs
 crl_dir           = $dir/crl
 new_certs_dir     = $dir/newcerts
@@ -65,7 +65,7 @@ string_mask         = utf8only
 default_md          = sha256
 
 # Extension to add when the -x509 option is used.
-x509_extensions     = v3_ca
+x509_extensions     = v3_intermediate_ca
 
 [ req_distinguished_name ]
 # See <https://en.wikipedia.org/wiki/Certificate_signing_request>.
@@ -83,7 +83,7 @@ stateOrProvinceName_default     = Hessen
 localityName_default            = Rittershausen
 0.organizationName_default      = PRDV
 organizationalUnitName_default  = IT
-emailAddress_default            =
+emailAddress_default            = cprior@gmail.com
 
 [ v3_ca ]
 # Extensions for a typical CA (`man x509v3_config`).
@@ -102,7 +102,7 @@ keyUsage = critical, digitalSignature, cRLSign, keyCertSign
 [ usr_cert ]
 # Extensions for client certificates (`man x509v3_config`).
 basicConstraints = CA:FALSE
-nsCertType = client, email
+# nsCertType = client, email
 nsComment = "OpenSSL Generated Client Certificate"
 subjectKeyIdentifier = hash
 authorityKeyIdentifier = keyid,issuer
@@ -112,13 +112,28 @@ extendedKeyUsage = clientAuth, emailProtection
 [ server_cert ]
 # Extensions for server certificates (`man x509v3_config`).
 basicConstraints = CA:FALSE
-nsCertType = server
+# nsCertType = server
 nsComment = "OpenSSL Generated Server Certificate"
 subjectKeyIdentifier = hash
 authorityKeyIdentifier = keyid,issuer:always
 keyUsage = critical, digitalSignature, keyEncipherment
 extendedKeyUsage = serverAuth
-#crlDistributionPoints = URI:http://localhost:8000/intermediate.crl.pem
+crlDistributionPoints = URI:http://pki.archam.de/intermediate.crl.pem
+subjectAltName = @alt_names
+
+[ server_client_cert ]
+# Extensions for server certificates (`man x509v3_config`).
+basicConstraints = CA:FALSE
+# nsCertType = server, client, email
+nsComment = "OpenSSL Generated Server Certificate"
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid,issuer:always
+keyUsage = critical, digitalSignature, keyEncipherment
+extendedKeyUsage = clientAuth,serverAuth
+crlDistributionPoints = URI:http://pki.archam.de/intermediate.crl.pem
+subjectAltName = @alt_names
+
+[alt_names]
 
 [ crl_ext ]
 # Extension for CRLs (`man x509v3_config`).

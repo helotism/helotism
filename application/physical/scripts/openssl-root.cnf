@@ -7,7 +7,7 @@ default_ca = CA_default
 
 [ CA_default ]
 # Directory and file locations.
-dir               = /cygdrive/c/Users/christian.prior/Desktop/openssltests/script1/helotism-root-ca
+dir               = .
 certs             = $dir/public-certs
 crl_dir           = $dir/crl
 new_certs_dir     = $dir/newcerts
@@ -83,7 +83,7 @@ stateOrProvinceName_default     = Hessen
 localityName_default            = Rittershausen
 0.organizationName_default      = PRDV
 organizationalUnitName_default  = IT
-emailAddress_default            =
+emailAddress_default            = cprior@gmail.com
 
 [ v3_ca ]
 # Extensions for a typical CA (`man x509v3_config`).
