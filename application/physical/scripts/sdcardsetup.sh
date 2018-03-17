@@ -88,13 +88,29 @@ while getopts ":hvpb:n:m:d:r:g:i:s:a:o:c:" opt; do
   esac;
 done  #end while getopts
 
+
+#https://stackoverflow.com/a/37939589
+version() {
+  echo "$@" | awk -F. '{ printf("%d%03d%03d%03d\n", $1,$2,$3,$4); }';
+}
+
+#Trying to keep this to a minimum.
+#Script tested and developed on Ubuntu 16.04
 checkrequirements() {
   i=0;
+  type awk >/dev/null 2>&1 || { echo >&2 "This script requires awk but it is not installed. ";  i=$((i + 1)); }
   type wget >/dev/null 2>&1 || { echo >&2 "This script requires wget but it is not installed. ";  i=$((i + 1)); }
   type fdisk >/dev/null 2>&1 || { echo >&2 "This script requires fdisk but it is not installed. ";  i=$((i + 1)); }
   type curl >/dev/null 2>&1 || { echo >&2 "This script requires curl but it is not installed. ";  i=$((i + 1)); }
   type bsdtar >/dev/null 2>&1 || { echo >&2 "This script requires bsdtar but it is not installed. ";  i=$((i + 1)); }
   type dd >/dev/null 2>&1 || { echo >&2 "This script requires dd but it is not installed. ";  i=$((i + 1)); }
+  type git >/dev/null 2>&1 || { echo >&2 "This script requires git but it is not installed. ";  i=$((i + 1)); }
+  type lsblk >/dev/null 2>&1 || { echo >&2 "This script requires lsblk but it is not installed. ";  i=$((i + 1)); }
+
+  BSDTARVERSION=$(bsdtar --version | cut -d" " -f2)
+  if [ $(version $BSDTARVERSION) -lt $(version "3.3.0") ]; then
+    echo >&2 "This script requires bsdtar version 3.3+ or higher but it is not installed. See https://github.com/helotism/helotism/issues/8";  i=$((i + 1));
+  fi
 
   if [[ $i > 0 ]]; then echo "Aborting."; echo "Please install the missing dependency."; exit 1; fi
 } #end function checkrequirements
@@ -210,16 +226,19 @@ sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | $_SUDO fdisk $__BLOCKDEVICE > /d
   w #Write the partition table and exit
 EOF
 
+$_SUDO  fdisk -l ${__BLOCKDEVICE}
+sleep 6
+
 echo "Creating filesystems."
 #filesystem boot partition
-$_SUDO mkfs.vfat "${__BLOCKDEVICE}p1" > /dev/null
+$_SUDO mkfs.vfat "${__BLOCKDEVICE}1" > /dev/null
 if [ ! -d ./tmp/boot ]; then mkdir ./tmp/boot; fi
-$_SUDO mount "/${__BLOCKDEVICE}p1" ./tmp/boot
+$_SUDO mount "${__BLOCKDEVICE}1" ./tmp/boot
 
 #filesystem main partition
-$_SUDO mkfs.ext4 -q -F "${__BLOCKDEVICE}p2"  > /dev/null #-F -F will even take mounted partitions.
+$_SUDO mkfs.ext4 -q -F "${__BLOCKDEVICE}2"  > /dev/null #-F -F will even take mounted partitions.
 if [ ! -d ./tmp/root ]; then mkdir ./tmp/root; fi
-$_SUDO mount "/${__BLOCKDEVICE}p2" ./tmp/root
+$_SUDO mount "${__BLOCKDEVICE}2" ./tmp/root
 
 echo "Copying to device ${__BLOCKDEVICE}."
 if [ $_VERBOSE == "true" ]; then

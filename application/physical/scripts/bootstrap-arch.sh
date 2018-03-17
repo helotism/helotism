@@ -108,10 +108,16 @@ done
 #  *
 #  */
 
+#https://stackoverflow.com/a/37939589
+version() {
+  echo "$@" | awk -F. '{ printf("%d%03d%03d%03d\n", $1,$2,$3,$4); }';
+}
+
 #Trying to keep this to a minimum.
 #Script tested and developed on Ubuntu 16.04
 checkrequirements() {
   i=0;
+  type awk >/dev/null 2>&1 || { echo >&2 "This script requires awk but it is not installed. ";  i=$((i + 1)); }
   type wget >/dev/null 2>&1 || { echo >&2 "This script requires wget but it is not installed. ";  i=$((i + 1)); }
   type fdisk >/dev/null 2>&1 || { echo >&2 "This script requires fdisk but it is not installed. ";  i=$((i + 1)); }
   type curl >/dev/null 2>&1 || { echo >&2 "This script requires curl but it is not installed. ";  i=$((i + 1)); }
@@ -119,6 +125,11 @@ checkrequirements() {
   type dd >/dev/null 2>&1 || { echo >&2 "This script requires dd but it is not installed. ";  i=$((i + 1)); }
   type git >/dev/null 2>&1 || { echo >&2 "This script requires git but it is not installed. ";  i=$((i + 1)); }
   type lsblk >/dev/null 2>&1 || { echo >&2 "This script requires lsblk but it is not installed. ";  i=$((i + 1)); }
+
+  BSDTARVERSION=$(bsdtar --version | cut -d" " -f2)
+  if [ $(version $BSDTARVERSION) -lt $(version "3.3.0") ]; then
+    echo >&2 "This script requires bsdtar version 3.3+ or higher but it is not installed. See https://github.com/helotism/helotism/issues/8";  i=$((i + 1));
+  fi
 
   if [[ $i > 0 ]]; then echo "Aborting."; echo "Please install the missing dependency."; exit 1; fi
 } #end function checkrequirements
