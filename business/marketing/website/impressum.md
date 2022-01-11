@@ -8,9 +8,9 @@ categories: [ raspifeed ]
 
 ## Angaben gemäß § 5 TMG: ##
 
-Christian Prior  
-Siegener Str. 79  
-35716 Dietzhölztal
+Christian Prior-Mamulyan
+Allerstr. 8
+38448 Wolfsburg
 
 Kontakt:
 
@@ -19,9 +19,9 @@ E-Mail: cprior@gmail.com
 
 ## Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV: ##
 
-Christian Prior  
-Siegener Str. 79  
-35716 Dietzhölztal
+Christian Prior-Mamulyan
+Allerstr. 8
+38448 Wolfsburg
 
 ## Haftungsausschluss (Disclaimer) ##
 
