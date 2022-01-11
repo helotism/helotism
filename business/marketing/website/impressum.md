@@ -8,9 +8,9 @@ categories: [ raspifeed ]
 
 ## Angaben gemäß § 5 TMG: ##
 
-Christian Prior-Mamulyan 
-Allerstr. 8 
-38448 Wolfsburg
+<p>Christian Prior-Mamulyan<br />
+Allerstr. 8<br />
+38448 Wolfsburg</p>
 
 Kontakt:
 
@@ -19,9 +19,9 @@ E-Mail: cprior@gmail.com
 
 ## Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV: ##
 
-Christian Prior-Mamulyan
-Allerstr. 8 
-38448 Wolfsburg
+<p>Christian Prior-Mamulyan<br />
+Allerstr. 8<br />
+38448 Wolfsburg</p>
 
 ## Haftungsausschluss (Disclaimer) ##
 
